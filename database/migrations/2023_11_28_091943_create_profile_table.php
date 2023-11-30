@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->uuid('user_uuid');
             $table->string('name');
-            $table->string('desc');
+            $table->longText('desc');
             $table->string('telp');
             $table->string('photo1')->comment('photo formal');
             $table->string('photo2')->comment('photo santai');

@@ -9,8 +9,9 @@
     <ul class="navbar-nav navbar-right">
         <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <img alt="image" src="{{ asset('file/profile/' . Auth::user()->photo) }}"
+                <img alt="image" src="{{ asset('storage/' . auth()->user()->profile->photo1) }}"
                     class="rounded-circle mr-1">
+
                 <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">

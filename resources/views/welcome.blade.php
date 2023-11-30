@@ -29,6 +29,15 @@
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
+    {{-- <style>
+        #hero {
+            width: 100%;
+            height: 100vh;
+            background: url("{{ asset('storage/' . $profile->photo1) }}") top right no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+    </style> --}}
 
     {{-- <script src="form.js"></script> --}}
 </head>
@@ -71,22 +80,20 @@
     <!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex flex-column justify-content-center">
+    <section id="hero" class="d-flex flex-column justify-content-center"
+        style="width: 100%; height: 100vh; background: url('{{ asset('storage/' . $profile->photo1) }}') top right no-repeat; background-size: cover; position: relative;">
         <div class="container" data-aos="zoom-in" data-aos-delay="100">
-            <h1>Yoga Bayu Anggana Pratama</h1>
+            <h1>{{ $profile->name }}</h1>
             <p>
                 Saya Seorang
                 <span class="typed" data-typed-items="Freelancer, Teknisi, Designer, Developer"></span>
             </p>
             <div class="social-links">
-                <a href="https://twitter.com/yoga_1721" class="twitter" target="_blank"><i
-                        class="bx bxl-twitter"></i></a>
-                <a href="https://facebook.com/bayu.angin.39" class="facebook" target="_blank"><i
-                        class="bx bxl-facebook"></i></a>
-                <a href="https://www.instagram.com/yogabayu.ap" class="instagram" target="_blank"><i
+                <a href="{{ $profile->twitter }}" class="twitter" target="_blank"><i class="bx bxl-twitter"></i></a>
+                <a href="{{ $profile->facebook }}" class="facebook" target="_blank"><i class="bx bxl-facebook"></i></a>
+                <a href="{{ $profile->instagram }}" class="instagram" target="_blank"><i
                         class="bx bxl-instagram"></i></a>
-                <a href="www.linkedin.com/in/yoga-bayu-anggana-pratama" class="linkedin" target="_blank"><i
-                        class="bx bxl-linkedin"></i></a>
+                <a href="{{ $profile->linkedin }}" class="linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a>
             </div>
         </div>
     </section>
@@ -99,64 +106,65 @@
                 <div class="section-title">
                     <h2>Tentang Saya</h2>
                     <p>
-                        Saya adalah lulusan terbaru dari Jurusan Teknik Komputer Kontrol
-                        Politeknik Negeri Madiun. Lulusan Teknik Komputer Kontrol dengan
-                        pengalaman dalam desain sketsa alat dengan perangkat lunak,
-                        membuat sirkuit elektronik, dan membangun perangkat IoT serta
-                        mengoperasikan aplikasi pengolah data.
+                        {!! $profile->desc !!}
                     </p>
                 </div>
 
                 <div class="row">
                     <div class="col-lg-4 text-center">
-                        <img src="{{ asset('assets/img/profile-img.jpg') }}" class="img-fluid" alt="" />
+                        <img src="{{ asset('storage/' . $profile->photo2) }}" class="img-fluid" alt="" />
                     </div>
                     <div class="col-lg-8 pt-4 pt-lg-0 content">
                         <h3>Data Diri:</h3>
                         <div class="row">
                             <div class="col-lg-6">
                                 <ul>
-                                    <li>
+                                    {{-- <li>
                                         <i class="icofont-rounded-right"></i>
                                         <strong>Tanggal Lahir:</strong> 21 Desember 1998
+                                    </li> --}}
+                                    <li>
+                                        <i class="icofont-rounded-right"></i>
+                                        <strong>Website:</strong> {{ $profile->website }}
                                     </li>
                                     <li>
                                         <i class="icofont-rounded-right"></i>
-                                        <strong>Website:</strong> yogabayu.000webhostapp.com
+                                        <strong>Nomor Telepon:</strong> 0{{ $profile->telp }}
                                     </li>
-                                    <li>
-                                        <i class="icofont-rounded-right"></i>
-                                        <strong>Nomor Telepon:</strong> 089506488560
-                                    </li>
-                                    <li>
+                                    {{-- <li>
                                         <i class="icofont-rounded-right"></i>
                                         <strong>Kota:</strong> Ponorogo
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                             <div class="col-lg-6">
                                 <ul>
-                                    <li>
+                                    {{-- <li>
                                         <i class="icofont-rounded-right"></i>
                                         <strong>Umur:</strong> 21
+                                    </li> --}}
+                                    <li>
+                                        <i class="icofont-rounded-right"></i>
+                                        <strong>Email:</strong> {{ $profile->user->email }}
                                     </li>
                                     <li>
                                         <i class="icofont-rounded-right"></i>
-                                        <strong>Email:</strong> yogabayusbi@gmail.com
-                                    </li>
-                                    <li>
-                                        <i class="icofont-rounded-right"></i>
-                                        <strong>Freelance:</strong> Available
+                                        <strong>Freelance:</strong>
+                                        @if ($profile->freelance == 1)
+                                            Available
+                                        @else
+                                            Not-Available
+                                        @endif
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <p>
+                        {{-- <p>
                             Saya memiliki kemampuan untuk beradaptasi dengan lingkungan
                             kerja, dapat berkomunikasi dengan baik, menerima kritik yang
                             membangun, dan senang untuk terus belajar . Saya siap bekerja
                             untuk perusahaan, baik secara individu maupun sebagai tim.
-                        </p>
+                        </p> --}}
                     </div>
                 </div>
             </div>
@@ -170,86 +178,37 @@
                     <h2>Skills</h2>
                 </div>
 
-                <div class="row skills-content">
-                    <div class="col-lg-6">
-                        <div class="progress">
-                            <span class="skill">Bahasa Indonesia <i class="val">100%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
+                <div class="col skills-content" style="margin-left: 7%">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                            <img src="https://www.vectorlogo.zone/logos/dartlang/dartlang-icon.svg" alt="dart" />
+                            <p class="skill-name">Dart</p>
                         </div>
-                        <div class="progress">
-                            <span class="skill">Bahasa Inggris <i class="val">80%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                            <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="firebase" />
+                            <p class="skill-name">Firebase</p>
                         </div>
-                        <div class="progress">
-                            <span class="skill">HTML <i class="val">90%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                            <img src="https://www.vectorlogo.zone/logos/flutterio/flutterio-icon.svg"
+                                alt="flutter" />
+                            <p class="skill-name">Flutter</p>
                         </div>
-
-                        <div class="progress">
-                            <span class="skill">CSS <i class="val">90%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                            <img src="https://www.vectorlogo.zone/logos/laravel/laravel-icon.svg" alt="laravel" />
+                            <p class="skill-name">Laravel</p>
                         </div>
-
-                        <div class="progress">
-                            <span class="skill">MySql <i class="val">60%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                            <img src="https://www.vectorlogo.zone/logos/vuejs/vuejs-icon.svg" alt="vuejs" />
+                            <p class="skill-name">Vue JS</p>
                         </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="progress">
-                            <span class="skill">PHP <i class="val">70%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                            <img src="https://www.vectorlogo.zone/logos/arduino/arduino-icon.svg" alt="arduino" />
+                            <p class="skill-name">Arduino</p>
                         </div>
-
-                        <div class="progress">
-                            <span class="skill">Electrical Support<i class="val">80%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-                        </div>
-
-                        <div class="progress">
-                            <span class="skill">SkectUp 2D /3D<i class="val">65%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-                        </div>
-
-                        <div class="progress">
-                            <span class="skill">Proteus Design <i class="val">60%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-                        </div>
-
-                        <div class="progress">
-                            <span class="skill">Web Framework (CodeIgniter, Laravel) <i class="val">50%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                            <img src="https://codeigniter.com/assets/icons/44521256.png" alt="CodeIgniter"
+                                width="60" height="60" />
+                            <p class="skill-name">CodeIgniter</p>
                         </div>
                     </div>
                 </div>
