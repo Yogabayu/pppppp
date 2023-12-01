@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\WelcomeController;
@@ -39,4 +40,7 @@ Route::middleware('auth')->group(function (){
 
     //skill
     Route::resource('skill',SkillController::class);
+
+    //education
+    Route::resource('education',EducationController::class);
 });

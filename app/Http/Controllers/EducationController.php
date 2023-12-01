@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SkillRequest;
-use App\Models\Skill;
+use App\Http\Requests\EducationRequest;
+use App\Models\Education;
+use Illuminate\Http\Request;
 
-class SkillController extends Controller
+class EducationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,8 @@ class SkillController extends Controller
     public function index()
     {
         try {
-            $skills = Skill::all();
+            dd('belum selesai');
+            $skills = Education::all();
 
             return view('admin.pages.skill',compact('skills'));
         } catch (\Exception $e) {
@@ -32,10 +34,10 @@ class SkillController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(SkillRequest $request)
+    public function store(EducationRequest $request)
     {
         try {
-            $skill          = new Skill;
+            $skill          = new Education;
             $skill->user_uuid    = auth()->user()->uuid; 
             $skill->name    = $request->name; 
             $skill->value    = $request->value; 
@@ -67,10 +69,10 @@ class SkillController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(SkillRequest $request, $id)
+    public function update(EducationRequest $request, $id)
     {
         try {
-            $skill          = Skill::findOrFail($id);
+            $skill          = Education::findOrFail($id);
             $skill->name    = $request->name; 
             $skill->value    = $request->value; 
             $skill->icon    = $request->icon;
@@ -88,7 +90,7 @@ class SkillController extends Controller
     public function destroy(string $id)
     {
         try {
-            $skill = Skill::findOrFail($id);
+            $skill = Education::findOrFail($id);
             $skill->delete();
             return back()->with('success','Berhasil menambah data');
         } catch (\Exception $e) {

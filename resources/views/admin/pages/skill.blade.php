@@ -5,6 +5,7 @@
 @push('style')
     <link rel="stylesheet" href="{{ asset('stisla/library/jqvmap/dist/jqvmap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('stisla/library/summernote/dist/summernote-bs4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('stisla/library/datatables/media/css/jquery.dataTables.min.css') }}">
 @endpush
 
 @section('main')
@@ -31,13 +32,47 @@
                                                 <th class="text-center">
                                                     No
                                                 </th>
-                                                <th>Code</th>
-                                                <th>Nama</th>
-                                                <th>SPV</th>
-                                                <th>Jumlah User</th>
+                                                <th>Name</th>
+                                                {{-- <th>Value</th> --}}
+                                                <th>Icon</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
+                                        <tbody>
+                                            @php
+                                                $no = 1;
+                                            @endphp
+                                            @foreach ($skills as $skill)
+                                                <tr>
+                                                    <td class="text-center">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $skill->name }}
+                                                    </td>
+                                                    {{-- <td>
+                                                        {{ $skill->value ?? 'null' }}
+                                                    </td> --}}
+                                                    <td>
+                                                        {{ $skill->icon }}
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-info btn-sm" title="Edit" data-toggle="modal"
+                                                            data-target="#detailModal{{ $skill->id }}"
+                                                            data-backdrop="false">
+                                                            <i class="fas fa-eye"></i>
+                                                        </a>
+                                                        <button class="btn btn-danger btn-sm" title="Delete"
+                                                            onclick="confirmDelete('{{ route('skill.destroy', $skill->id) }}')">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                @include('admin.pages.modal.update-skill', [
+                                                    'dataId' => $skill->id,
+                                                ])
+                                            @endforeach
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -76,18 +111,6 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="exportType">Value</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-person"></i>
-                                        </div>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="Porsen Skill" name="value">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
                                 <label for="exportType">Icon Skill</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -113,10 +136,65 @@
 
 @push('scripts')
     <!-- JS Libraies -->
+
+    <script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
+    <script src="{{ asset('stisla/library/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('stisla/library/jquery-ui-dist/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('stisla/library/simpleweather/jquery.simpleWeather.min.js') }}"></script>
     <script src="{{ asset('stisla/library/chart.js/dist/Chart.min.js') }}"></script>
     <script src="{{ asset('stisla/library/jqvmap/dist/jquery.vmap.min.js') }}"></script>
     <script src="{{ asset('stisla/library/jqvmap/dist/maps/jquery.vmap.world.js') }}"></script>
     <script src="{{ asset('stisla/library/summernote/dist/summernote-bs4.min.js') }}"></script>
     <script src="{{ asset('stisla/library/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
+
+    <!-- Page Specific JS File -->
+    <script>
+        "use strict";
+
+        $("#table-1").dataTable({
+            columnDefs: [{
+                sortable: false,
+                targets: []
+            }],
+        });
+    </script>
+
+    <script>
+        function confirmDelete(deleteUrl) {
+            Swal.fire({
+                title: 'Apakah anda yakin menghapus data?',
+                text: 'Data yang dihapus tidak dapat dipulihkan',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, lanjutkan !'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If the user clicks "Yes," submit the form
+                    var form = document.createElement('form');
+                    form.action = deleteUrl;
+                    form.method = 'POST';
+                    form.style.display = 'none';
+
+                    var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+                    // Append CSRF token to the form
+                    var csrfInput = document.createElement('input');
+                    csrfInput.name = '_token';
+                    csrfInput.value = csrfToken;
+                    form.appendChild(csrfInput);
+
+                    // Append a method spoofing input for DELETE request
+                    var methodInput = document.createElement('input');
+                    methodInput.name = '_method';
+                    methodInput.value = 'DELETE';
+                    form.appendChild(methodInput);
+
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+            });
+        }
+    </script>
 @endpush

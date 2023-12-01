@@ -180,36 +180,13 @@
 
                 <div class="col skills-content" style="margin-left: 7%">
                     <div class="row justify-content-center">
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                            <img src="https://www.vectorlogo.zone/logos/dartlang/dartlang-icon.svg" alt="dart" />
-                            <p class="skill-name">Dart</p>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                            <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="firebase" />
-                            <p class="skill-name">Firebase</p>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                            <img src="https://www.vectorlogo.zone/logos/flutterio/flutterio-icon.svg"
-                                alt="flutter" />
-                            <p class="skill-name">Flutter</p>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                            <img src="https://www.vectorlogo.zone/logos/laravel/laravel-icon.svg" alt="laravel" />
-                            <p class="skill-name">Laravel</p>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                            <img src="https://www.vectorlogo.zone/logos/vuejs/vuejs-icon.svg" alt="vuejs" />
-                            <p class="skill-name">Vue JS</p>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                            <img src="https://www.vectorlogo.zone/logos/arduino/arduino-icon.svg" alt="arduino" />
-                            <p class="skill-name">Arduino</p>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                            <img src="https://codeigniter.com/assets/icons/44521256.png" alt="CodeIgniter"
-                                width="60" height="60" />
-                            <p class="skill-name">CodeIgniter</p>
-                        </div>
+                        @foreach ($skills as $skill)
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                                <img src="{{ $skill->icon }}" alt="{{ $skill->name }}" width="60"
+                                    height="60" />
+                                <p class="skill-name">{{ $skill->name }}</p>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
