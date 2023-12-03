@@ -58,7 +58,7 @@
 
     <!-- General JS Scripts -->
     @include('sweetalert::alert')
-    <script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
+    {{-- <script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script> --}}
     <script src="{{ asset('stisla/library/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('stisla/library/popper.js/dist/umd/popper.js') }}"></script>
     <script src="{{ asset('stisla/library/tooltip.js/dist/umd/tooltip.js') }}"></script>
@@ -70,7 +70,7 @@
     <!-- Template JS File -->
     <script src="{{ asset('stisla/js/scripts.js') }}"></script>
     <script src="{{ asset('stisla/js/custom.js') }}"></script>
-    <script>
+    {{-- <script>
         // Include this script in your Blade view or layout
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -89,8 +89,8 @@
                     title: successMessage
                 })
             }
-
-            // Check for error message in Laravel session
+        });
+        document.addEventListener('DOMContentLoaded', function() {
             let errorMessage = "{{ session('error') }}";
             if (errorMessage) {
                 const Toast = Swal.mixin({ //when firing the toast, the first window closes automatically
@@ -106,7 +106,7 @@
                 })
             }
         });
-    </script>
+    </script> --}}
     <script>
         setTimeout(function() {
             $('.swal2-popup').fadeOut();

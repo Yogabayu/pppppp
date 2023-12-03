@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('facebook');
             $table->string('instagram');
             $table->string('linkedin');
+            $table->string('tagline');
             $table->tinyInteger('freelance');
             $table->timestamps();
 

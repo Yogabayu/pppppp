@@ -29,6 +29,11 @@
                     <i class="fas fa-magnifying-glass-chart"></i><span>Education</span>
                 </a>
             </li>
+            <li class='{{ Request::is('experience') ? 'active' : '' }}'>
+                <a class="nav-link " href="{{ route('experience.index') }}">
+                    <i class="fas fa-magnifying-glass-chart"></i><span>Experience</span>
+                </a>
+            </li>
 
             {{-- <li class='{{ Request::is('datas') ? 'active' : '' }}'>
                 <a class="nav-link" href="#">

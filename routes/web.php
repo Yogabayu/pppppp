@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EducationController;
+use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\WelcomeController;
@@ -43,4 +44,8 @@ Route::middleware('auth')->group(function (){
 
     //education
     Route::resource('education',EducationController::class);
+
+    //experience
+    Route::resource('experience',ExperienceController::class);
+    Route::post('experience-store',[ExperienceController::class,'store'])->name('experience-store');
 });

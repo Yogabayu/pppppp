@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\EducationRequest;
-use App\Models\Education;
+use App\Http\Requests\ExperienceRequest;
+use App\Models\Experience;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
-class EducationController extends Controller
+class ExperienceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +16,9 @@ class EducationController extends Controller
     {
         try {
             $uuid = auth()->user()->uuid;
-            $edus = Education::where('user_uuid',$uuid)->get();
-            // dd($edus);
-            return view('admin.pages.education',compact('edus'));
+            $exps = Experience::where('user_uuid',$uuid)->get();
+        
+            return view('admin.pages.experience',compact('exps'));
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
@@ -34,20 +35,23 @@ class EducationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(EducationRequest $request)
+    public function store(Request $request)
     {
+        // dd($request->all());
         try {
-            $edu          = new Education;
-            $edu->user_uuid    = auth()->user()->uuid; 
-            $edu->sekolah    = $request->sekolah; 
-            $edu->jurusan    = $request->jurusan; 
-            $edu->start    = $request->start;
-            $edu->end    = $request->end;
-            $edu->desc    = $request->desc;
-            $edu->save();
-            
+            $exp                = new Experience;
+            $exp->user_uuid     = auth()->user()->uuid; 
+            $exp->office    = $request->office; 
+            $exp->position    = $request->position; 
+            $exp->start    = $request->start;
+            $exp->end    = $request->end;
+            $exp->desc    = $request->desc;
+            $exp->type    = $request->type;
+            $exp->save();
+            Alert::success(session('success'));
             return back()->with('success','Berhasil menambahkan data');
         } catch (\Exception $e) {
+            Alert::success(session('success'));
             return back()->with('error', $e->getMessage());
         }
     }
@@ -71,17 +75,18 @@ class EducationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(EducationRequest $request, $id)
+    public function update(ExperienceRequest $request, $id)
     {
         try {
-            $edu          = Education::findOrFail($id);
-            $edu->user_uuid    = auth()->user()->uuid; 
-            $edu->sekolah    = $request->sekolah; 
-            $edu->jurusan    = $request->jurusan; 
-            $edu->start    = $request->start;
-            $edu->end    = $request->end;
-            $edu->desc    = $request->desc;
-            $edu->save();
+            $exp          = Experience::findOrFail($id);
+            $exp->user_uuid     = auth()->user()->uuid; 
+            $exp->office    = $request->office; 
+            $exp->position    = $request->position; 
+            $exp->start    = $request->start;
+            $exp->end    = $request->end;
+            $exp->desc    = $request->desc;
+            $exp->type    = $request->type;
+            $exp->save();
             
             return back()->with('success','Berhasil update data');
         } catch (\Exception $e) {
@@ -95,8 +100,8 @@ class EducationController extends Controller
     public function destroy(string $id)
     {
         try {
-            $edu = Education::findOrFail($id);
-            $edu->delete();
+            $exp = Experience::findOrFail($id);
+            $exp->delete();
             return back()->with('success','Berhasil menghapus data');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
