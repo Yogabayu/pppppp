@@ -9,7 +9,7 @@
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
             <li class='{{ Request::is('dashboard') ? 'active' : '' }}'>
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('dashboard.index')}}">
                     <i class="fas fa-fire"></i><span>Dashboard</span>
                 </a>
             </li>

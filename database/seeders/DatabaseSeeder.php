@@ -18,15 +18,30 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->insert(
-            [
-                'uuid' => Str::uuid(),
-                'name' => 'Yoga Bayu Anggana Pratama',
-                'email' => 'yogabayusbi@gmail.com',
-                'password' => Hash::make('12345678'),
-            ]
-        );
-        
+        $uuid = Str::uuid();
+        $user = DB::table('users')->insert([
+            'uuid' => $uuid,
+            'name' => 'Yoga Bayu Anggana Pratama',
+            'email' => 'yogabayusbi@gmail.com',
+            'password' => Hash::make('12345678'),
+        ]);
+
+        DB::table('profile')->insert([
+            'user_uuid' => $uuid,
+            'name' => 'Yoga Bayu Anggana Pratama',
+            'desc' => 'lorem ipsum dolor sit amet',
+            'telp' => '08213922',
+            'photo1' => '08213922',
+            'photo2' => '08213922',
+            'website' => 'lorem ipsum',
+            'twitter' => 'lorem ipsum',
+            'facebook' => 'lorem ipsum',
+            'instagram' => 'lorem ipsum',
+            'linkedin' => 'lorem ipsum',
+            'freelance' => 1,
+            'address' => 'lorem ipsum',
+        ]);
+
         DB::table('settings')->insert(
             [
                 'name_app' => 'portofolioKU',
