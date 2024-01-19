@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('Skill', 'Admin Dashboard')
+@section('title', 'Education')
 
 @push('style')
     <link rel="stylesheet" href="{{ asset('stisla/library/jqvmap/dist/jqvmap.min.css') }}">
@@ -12,7 +12,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Skill</h1>
+                <h1>Pendidikan</h1>
             </div>
             <div class="section-body">
                 <div class="row">
@@ -32,9 +32,11 @@
                                                 <th class="text-center">
                                                     No
                                                 </th>
-                                                <th>Name</th>
-                                                {{-- <th>Value</th> --}}
-                                                <th>Icon</th>
+                                                <th>Sekolah</th>
+                                                <th>Jurusan</th>
+                                                <th>Tahun Mulai</th>
+                                                <th>Tahun Selesai</th>
+                                                <th>Deskripsi</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -42,34 +44,40 @@
                                             @php
                                                 $no = 1;
                                             @endphp
-                                            @foreach ($skills as $skill)
+                                            @foreach ($edus as $edu)
                                                 <tr>
                                                     <td class="text-center">
                                                         {{ $no++ }}
                                                     </td>
                                                     <td>
-                                                        {{ $skill->name }}
+                                                        {{ $edu->sekolah }}
                                                     </td>
-                                                    {{-- <td>
-                                                        {{ $skill->value ?? 'null' }}
-                                                    </td> --}}
                                                     <td>
-                                                        {{ $skill->icon }}
+                                                        {{ $edu->jurusan }}
+                                                    </td>
+                                                    <td>
+                                                        {{ \Carbon\Carbon::parse($edu->start)->format('Y') }}
+                                                    </td>
+                                                    <td>
+                                                        {{ \Carbon\Carbon::parse($edu->start)->format('Y') }}
+                                                    </td>
+                                                    <td>
+                                                        {!! $edu->desc !!}
                                                     </td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" title="Edit" data-toggle="modal"
-                                                            data-target="#detailModal{{ $skill->id }}"
+                                                            data-target="#detailModal{{ $edu->id }}"
                                                             data-backdrop="false">
                                                             <i class="fas fa-pen"></i>
                                                         </a>
                                                         <button class="btn btn-danger btn-sm" title="Delete"
-                                                            onclick="confirmDelete('{{ route('skill.destroy', $skill->id) }}')">
+                                                            onclick="confirmDelete('{{ route('education.destroy', $edu->id) }}')">
                                                             <i class="fas fa-trash-alt"></i>
                                                         </button>
                                                     </td>
                                                 </tr>
-                                                @include('admin.pages.modal.update-skill', [
-                                                    'dataId' => $skill->id,
+                                                @include('admin.pages.modal.update-education', [
+                                                    'dataId' => $edu->id,
                                                 ])
                                             @endforeach
                                         </tbody>
@@ -86,7 +94,7 @@
         <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true" style="z-index: 9999">
             <div class="modal-dialog " role="document">
-                <form action="{{ route('skill.store') }}" method="post">
+                <form action="{{ route('education.store') }}" method="post">
                     @csrf
                     @method('post')
                     <div class="modal-content">
@@ -98,29 +106,60 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="exportType">Name Skill</label>
+                                <label for="exportType">Nama Sekolah</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <i class="fas fa-person"></i>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Nama Skill" name="name"
+                                    <input type="text" class="form-control" placeholder="Nama sekolah" name="sekolah"
+                                        id="sekolah" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exportType">Nama Jurusan</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-person"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Nama jurusan" name="jurusan"
+                                        id="jurusan" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exportType">Tanggal Mulai</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-person"></i>
+                                        </div>
+                                    </div>
+                                    <input type="date" class="form-control" name="start" id="start"
                                         required>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="exportType">Icon Skill</label>
+                                <label for="exportType">Tanggal Selesai</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <i class="fas fa-person"></i>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Link icon Skill" name="icon"
+                                    <input type="date" class="form-control" name="end" id="end"
                                         required>
                                 </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Deskripsi</label>
+                                <textarea class="summernote" name="desc" id="desc" cols="30" rows="40"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">

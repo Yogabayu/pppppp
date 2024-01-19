@@ -14,10 +14,9 @@ class EducationController extends Controller
     public function index()
     {
         try {
-            dd('belum selesai');
-            $skills = Education::all();
+            $edus = Education::all();
 
-            return view('admin.pages.skill',compact('skills'));
+            return view('admin.pages.education', compact('edus'));
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
@@ -34,17 +33,19 @@ class EducationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(EducationRequest $request)
+    public function store(Request $request)
     {
         try {
-            $skill          = new Education;
-            $skill->user_uuid    = auth()->user()->uuid; 
-            $skill->name    = $request->name; 
-            $skill->value    = $request->value; 
-            $skill->icon    = $request->icon;
-            $skill->save();
-            
-            return back()->with('success','Berhasil menambahkan data');
+            $edu                  = new Education;
+            $edu->user_uuid       = auth()->user()->uuid;
+            $edu->sekolah         = $request->sekolah;
+            $edu->jurusan         = $request->jurusan;
+            $edu->start           = $request->start;
+            $edu->end             = $request->end;
+            $edu->desc            = $request->desc;
+            $edu->save();
+
+            return back()->with('success', 'Berhasil menambahkan data');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
@@ -69,16 +70,19 @@ class EducationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(EducationRequest $request, $id)
+    public function update(Request $request, $id)
     {
         try {
-            $skill          = Education::findOrFail($id);
-            $skill->name    = $request->name; 
-            $skill->value    = $request->value; 
-            $skill->icon    = $request->icon;
-            $skill->save();
-            
-            return back()->with('success','Berhasil update data');
+            $edu                  = Education::findOrFail($id);
+            $edu->user_uuid       = auth()->user()->uuid;
+            $edu->sekolah         = $request->sekolah;
+            $edu->jurusan         = $request->jurusan;
+            $edu->start           = $request->start;
+            $edu->end             = $request->end;
+            $edu->desc            = $request->desc;
+            $edu->save();
+
+            return back()->with('success', 'Berhasil update data');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
@@ -92,7 +96,7 @@ class EducationController extends Controller
         try {
             $skill = Education::findOrFail($id);
             $skill->delete();
-            return back()->with('success','Berhasil menambah data');
+            return back()->with('success', 'Berhasil menghapus data');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }

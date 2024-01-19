@@ -1,18 +1,20 @@
 @extends('admin.layout.app')
 
-@section('Skill', 'Admin Dashboard')
+@section('title', 'SoftSkill')
 
 @push('style')
     <link rel="stylesheet" href="{{ asset('stisla/library/jqvmap/dist/jqvmap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('stisla/library/summernote/dist/summernote-bs4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('stisla/library/datatables/media/css/jquery.dataTables.min.css') }}">
+    <link href="{{ asset('assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/vendor/venobox/venobox.css') }}" rel="stylesheet" />
 @endpush
 
 @section('main')
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Skill</h1>
+                <h1>Softskill</h1>
             </div>
             <div class="section-body">
                 <div class="row">
@@ -32,9 +34,10 @@
                                                 <th class="text-center">
                                                     No
                                                 </th>
-                                                <th>Name</th>
-                                                {{-- <th>Value</th> --}}
-                                                <th>Icon</th>
+                                                <th>Softskill</th>
+                                                <th>Ikon</th>
+                                                <th>Deskripsi</th>
+                                                <th>Status</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -42,34 +45,41 @@
                                             @php
                                                 $no = 1;
                                             @endphp
-                                            @foreach ($skills as $skill)
+                                            @foreach ($softs as $soft)
                                                 <tr>
                                                     <td class="text-center">
                                                         {{ $no++ }}
                                                     </td>
                                                     <td>
-                                                        {{ $skill->name }}
+                                                        {{ $soft->softskill }}
                                                     </td>
-                                                    {{-- <td>
-                                                        {{ $skill->value ?? 'null' }}
-                                                    </td> --}}
                                                     <td>
-                                                        {{ $skill->icon }}
+                                                        {!! $soft->icon !!}
+                                                    </td>
+                                                    <td>
+                                                        {{ $soft->short_desc }}
+                                                    </td>
+                                                    <td>
+                                                        @if ($soft->is_see == 1)
+                                                            <button class="btn btn-sm btn-success">Ditampilkan</button>
+                                                        @else
+                                                            <button class="btn btn-sm btn-secondary">Disembunyikan</button>
+                                                        @endif
                                                     </td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" title="Edit" data-toggle="modal"
-                                                            data-target="#detailModal{{ $skill->id }}"
+                                                            data-target="#detailModal{{ $soft->id }}"
                                                             data-backdrop="false">
                                                             <i class="fas fa-pen"></i>
                                                         </a>
                                                         <button class="btn btn-danger btn-sm" title="Delete"
-                                                            onclick="confirmDelete('{{ route('skill.destroy', $skill->id) }}')">
+                                                            onclick="confirmDelete('{{ route('softskill.destroy', $soft->id) }}')">
                                                             <i class="fas fa-trash-alt"></i>
                                                         </button>
                                                     </td>
                                                 </tr>
-                                                @include('admin.pages.modal.update-skill', [
-                                                    'dataId' => $skill->id,
+                                                @include('admin.pages.modal.update-soft', [
+                                                    'dataId' => $soft->id,
                                                 ])
                                             @endforeach
                                         </tbody>
@@ -86,7 +96,7 @@
         <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true" style="z-index: 9999">
             <div class="modal-dialog " role="document">
-                <form action="{{ route('skill.store') }}" method="post">
+                <form action="{{ route('softskill.store') }}" method="post">
                     @csrf
                     @method('post')
                     <div class="modal-content">
@@ -98,29 +108,36 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="exportType">Name Skill</label>
+                                <label for="exportType">Softskill</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <i class="fas fa-person"></i>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Nama Skill" name="name"
-                                        required>
+                                    <input type="text" class="form-control" placeholder="Nama Softskill"
+                                        name="softskill" id="softskill" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="exportType">Icon Skill</label>
+                                <label for="exportType">Ikon (<a href="https://boxicons.com/" target="_blank" rel="noopener noreferrer">bx bx-icon</a>)</label>
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-person"></i>
-                                        </div>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="Link icon Skill" name="icon"
-                                        required>
+                                    <textarea name="icon" id="icon" cols="30" rows="40" class="form-control" required></textarea>
                                 </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Deskripsi Singkat</label>
+                                <textarea class="form-control" name="short_desc" id="short_desc" cols="30" rows="40"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="type">Status</label>
+                                <select name="is_see" id="is_see" class="form-control">
+                                    <option value="1">Ditampilkan</option>
+                                    <option value="0">Disembunyikan</option>
+                                </select>
                             </div>
                         </div>
                         <div class="modal-footer">

@@ -45,6 +45,18 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label>Alamat</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fas fa-phone"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="address"
+                                                name="address" value="{{ $profile->address }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label>Telp</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">

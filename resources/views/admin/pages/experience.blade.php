@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('Skill', 'Admin Dashboard')
+@section('title', 'Experience')
 
 @push('style')
     <link rel="stylesheet" href="{{ asset('stisla/library/jqvmap/dist/jqvmap.min.css') }}">
@@ -12,7 +12,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Skill</h1>
+                <h1>Pengalaman</h1>
             </div>
             <div class="section-body">
                 <div class="row">
@@ -32,9 +32,12 @@
                                                 <th class="text-center">
                                                     No
                                                 </th>
-                                                <th>Name</th>
-                                                {{-- <th>Value</th> --}}
-                                                <th>Icon</th>
+                                                <th>PT</th>
+                                                <th>Posisi</th>
+                                                <th>Tahun Mulai</th>
+                                                <th>Tahun Selesai</th>
+                                                <th>Deskripsi</th>
+                                                <th>Tipe</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -42,34 +45,47 @@
                                             @php
                                                 $no = 1;
                                             @endphp
-                                            @foreach ($skills as $skill)
+                                            @foreach ($exps as $exp)
                                                 <tr>
                                                     <td class="text-center">
                                                         {{ $no++ }}
                                                     </td>
                                                     <td>
-                                                        {{ $skill->name }}
+                                                        {{ $exp->office }}
                                                     </td>
-                                                    {{-- <td>
-                                                        {{ $skill->value ?? 'null' }}
-                                                    </td> --}}
                                                     <td>
-                                                        {{ $skill->icon }}
+                                                        {{ $exp->position }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $exp->start }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $exp->end }}
+                                                    </td>
+                                                    <td>
+                                                        {!! $exp->desc !!}
+                                                    </td>
+                                                    <td>
+                                                        @if ($exp->type==1)
+                                                            <button class="btn btn-sm btn-primary">Kerja</button>
+                                                        @else 
+                                                            <button class="btn btn-sm btn-secondary">Magang</button>
+                                                        @endif
                                                     </td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" title="Edit" data-toggle="modal"
-                                                            data-target="#detailModal{{ $skill->id }}"
+                                                            data-target="#detailModal{{ $exp->id }}"
                                                             data-backdrop="false">
                                                             <i class="fas fa-pen"></i>
                                                         </a>
                                                         <button class="btn btn-danger btn-sm" title="Delete"
-                                                            onclick="confirmDelete('{{ route('skill.destroy', $skill->id) }}')">
+                                                            onclick="confirmDelete('{{ route('experience.destroy', $exp->id) }}')">
                                                             <i class="fas fa-trash-alt"></i>
                                                         </button>
                                                     </td>
                                                 </tr>
-                                                @include('admin.pages.modal.update-skill', [
-                                                    'dataId' => $skill->id,
+                                                @include('admin.pages.modal.update-exp', [
+                                                    'dataId' => $exp->id,
                                                 ])
                                             @endforeach
                                         </tbody>
@@ -86,7 +102,7 @@
         <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true" style="z-index: 9999">
             <div class="modal-dialog " role="document">
-                <form action="{{ route('skill.store') }}" method="post">
+                <form action="{{ route('experience.store') }}" method="post">
                     @csrf
                     @method('post')
                     <div class="modal-content">
@@ -98,29 +114,67 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="exportType">Name Skill</label>
+                                <label for="exportType">Nama PT</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <i class="fas fa-person"></i>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Nama Skill" name="name"
-                                        required>
+                                    <input type="text" class="form-control" placeholder="Nama Tempat Kerja" name="office"
+                                        id="office" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="exportType">Icon Skill</label>
+                                <label for="exportType">Nama Posisi</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <i class="fas fa-person"></i>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Link icon Skill" name="icon"
-                                        required>
+                                    <input type="text" class="form-control" placeholder="Nama jurusan" name="position"
+                                        id="position" required>
                                 </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exportType">Tanggal Mulai</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-person"></i>
+                                        </div>
+                                    </div>
+                                    <input type="date" class="form-control" name="start" id="start" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exportType">Tanggal Selesai</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-person"></i>
+                                        </div>
+                                    </div>
+                                    <input type="date" class="form-control" name="end" id="end" >
+                                </div>
+                                <p class="text-danger">kosongkan jika masih bekerja</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Deskripsi</label>
+                                <textarea class="summernote" name="desc" id="desc" cols="30" rows="40"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="type">Jenis</label>
+                                <select name="type" id="type" class="form-control">
+                                    <option value="1">Kerja</option>
+                                    <option value="0">Magang</option>
+                                </select>
                             </div>
                         </div>
                         <div class="modal-footer">

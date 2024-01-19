@@ -85,6 +85,7 @@ class ProfileController extends Controller
                 'instagram' => $request->input('instagram'),
                 'linkedin' => $request->input('linkedin'),
                 'freelance' => $request->input('freelance'),
+                'address' => $request->input('address'),
             ]);
 
             // Handle file uploads (if present)
