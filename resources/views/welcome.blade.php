@@ -4,11 +4,28 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Online portfolio for {{ $profile->name }} - Yoga Bayu Anggana Pratama" />
+    <meta name="keywords" content="portfolio, {{ $profile->name }}, Yoga Bayu Anggana Pratama, web development, fullstack dev" />
 
-    <title>Yoga Bayu AP</title>
-    <meta content="Portofolio Online Yoga Bayu Anggana Pratama" name="descriptison" />
-    <meta content="" name="keywords" />
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Portfolio - {{ $profile->name }}" />
+    <meta property="og:description"
+        content="Explore the online portfolio of {{ $profile->name }} - Yoga Bayu Anggana Pratama" />
+    <meta property="og:image" content="{{ asset('storage/' . $profile->photo1) }}" />
+    <!-- Add the URL to an image relevant to your portfolio -->
+    <meta property="og:url" content="{{ url('/') }}" />
+    <meta name="og:site_name" content="Portofolio" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Portfolio - {{ $profile->name }}" />
+    <meta name="twitter:description"
+        content="Explore the online portfolio of {{ $profile->name }} - Yoga Bayu Anggana Pratama" />
+    <meta name="twitter:image" content="{{ asset('storage/' . $profile->photo1) }}" />
+    <!-- Add the URL to an image relevant to your portfolio -->
+
+    <title>Portfolio - {{ $profile->name }}</title>
 
     <!-- Favicons -->
     <link href="{{ asset('assets/img/favicon-y.png') }}" rel="icon" />
