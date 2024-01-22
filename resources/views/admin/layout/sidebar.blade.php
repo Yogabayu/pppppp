@@ -39,6 +39,11 @@
                     <i class="fas fa-magnifying-glass-chart"></i><span>Softskill</span>
                 </a>
             </li>
+            <li class='{{ Request::is('project') ? 'active' : '' }}'>
+                <a class="nav-link " href="{{ route('project.index') }}">
+                    <i class="fas fa-magnifying-glass-chart"></i><span>Project</span>
+                </a>
+            </li>
 
             {{-- <li class='{{ Request::is('datas') ? 'active' : '' }}'>
                 <a class="nav-link" href="#">

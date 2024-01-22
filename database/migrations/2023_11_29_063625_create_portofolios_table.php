@@ -16,8 +16,10 @@ return new class extends Migration
             $table->uuid('user_uuid');
             $table->string('photo');
             $table->string('title');
-            $table->string('desc');
-            $table->string('tag');
+            $table->string('short_desc');
+            $table->longText('long_desc');
+            $table->string('link')->nullable();
+            $table->boolean('status')->comment('1: tampil, 2: tidak tampil');
             $table->timestamps();
 
             $table->foreign('user_uuid')->references('uuid')->on('users');

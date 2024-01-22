@@ -38,6 +38,19 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label>Tag</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    Tag
+                                                </div>
+                                            </div>
+                                            <input type="string" class="form-control" placeholder="tag berjalan di hero" name="tag"
+                                                value="{{ $profile->tag }}" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label>Deskripsi</label>
                                         <textarea class="summernote" name="desc" id="desc" cols="30" rows="40">
                                                 {{ $profile->desc }}

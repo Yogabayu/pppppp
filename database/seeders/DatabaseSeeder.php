@@ -40,6 +40,7 @@ class DatabaseSeeder extends Seeder
             'linkedin' => 'lorem ipsum',
             'freelance' => 1,
             'address' => 'lorem ipsum',
+            'tag' => 'Freelancer, Teknisi, Designer, Developer',
         ]);
 
         DB::table('settings')->insert(

@@ -28,6 +28,109 @@
     <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet" />
 
     <!-- Template Main CSS File -->
+    <style>
+        .wrapper-card {
+            display: table;
+            height: 100%;
+            width: 100%;
+        }
+
+        .container-fostrap-card {
+            display: table-cell;
+            padding: 1em;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .fostrap-logo-card {
+            width: 100px;
+            margin-bottom: 15px
+        }
+
+        h1.heading-card {
+            color: #fff;
+            font-size: 1.15em;
+            font-weight: 900;
+            margin: 0 0 0.5em;
+            color: #505050;
+        }
+
+        @media (min-width: 450px) {
+            h1.heading-card {
+                font-size: 3.55em;
+            }
+        }
+
+        @media (min-width: 760px) {
+            h1.heading-card {
+                font-size: 3.05em;
+            }
+        }
+
+        @media (min-width: 900px) {
+            h1.heading-card {
+                font-size: 3.25em;
+                margin: 0 0 0.3em;
+            }
+        }
+
+        .card {
+            display: block;
+            margin-bottom: 20px;
+            line-height: 1.42857143;
+            background-color: #fff;
+            border-radius: 2px;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            transition: box-shadow .25s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .img-card {
+            width: 100%;
+            height: 200px;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+            display: block;
+            overflow: hidden;
+        }
+
+        .img-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: all .25s ease;
+        }
+
+        .card-content-card {
+            padding: 15px;
+            text-align: left;
+        }
+
+        .card-title-card {
+            margin-top: 0px;
+            font-weight: 700;
+            font-size: 1.65em;
+        }
+
+        .card-title-card a {
+            color: #000;
+            text-decoration: none !important;
+        }
+
+        .card-read-more-card {
+            border-top: 1px solid #D4D4D4;
+        }
+
+        .card-read-more-card a {
+            text-decoration: none !important;
+            padding: 10px;
+            font-weight: 600;
+            text-transform: uppercase
+        }
+    </style>
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
     {{-- <style>
         #hero {
@@ -119,10 +222,6 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <ul>
-                                    {{-- <li>
-                                        <i class="icofont-rounded-right"></i>
-                                        <strong>Tanggal Lahir:</strong> 21 Desember 1998
-                                    </li> --}}
                                     <li>
                                         <i class="icofont-rounded-right"></i>
                                         <strong>Website:</strong> {{ $profile->website }}
@@ -131,18 +230,10 @@
                                         <i class="icofont-rounded-right"></i>
                                         <strong>Nomor Telepon:</strong> 0{{ $profile->telp }}
                                     </li>
-                                    {{-- <li>
-                                        <i class="icofont-rounded-right"></i>
-                                        <strong>Kota:</strong> Ponorogo
-                                    </li> --}}
                                 </ul>
                             </div>
                             <div class="col-lg-6">
                                 <ul>
-                                    {{-- <li>
-                                        <i class="icofont-rounded-right"></i>
-                                        <strong>Umur:</strong> 21
-                                    </li> --}}
                                     <li>
                                         <i class="icofont-rounded-right"></i>
                                         <strong>Email:</strong> {{ $profile->user->email }}
@@ -295,7 +386,7 @@
                     <p>Beberapa Koleksi Dari Hasil Saya selama ini</p>
                 </div>
 
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
                         <ul id="portfolio-flters">
                             <li data-filter="*" class="filter-active">Semua</li>
@@ -304,9 +395,9 @@
                             <li data-filter=".filter-app">Aplikasi Android</li>
                         </ul>
                     </div>
-                </div>
+                </div> --}}
 
-                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                {{-- <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
                     <!-- website rs-->
                     <div class="col-lg-4 col-md-6 portfolio-item filter-web">
                         <div class="portfolio-wrap">
@@ -577,7 +668,45 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
+                <section class="wrapper-card">
+                    <div class="container-fostrap-card">
+                        <div class="content-card">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-4">
+                                        <div class="card">
+                                            <a class="img-card"
+                                                href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html">
+                                                <img
+                                                    src="https://1.bp.blogspot.com/-Bii3S69BdjQ/VtdOpIi4aoI/AAAAAAAABlk/F0z23Yr59f0/s640/cover.jpg" />
+                                            </a>
+                                            <div class="card-content-card">
+                                                <h4 class="card-title-card">
+                                                    <a
+                                                        href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html">
+                                                        Bootstrap 3 Carousel FadeIn Out Effect
+                                                    </a>
+                                                </h4>
+                                                <p class="">
+                                                    Tutorial to make a carousel bootstrap by adding more wonderful
+                                                    effect fadein ...
+                                                </p>
+                                            </div>
+                                            <div class="card-read-more-card">
+                                                <a href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html"
+                                                    class="btn btn-link btn-block">
+                                                    Read More
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
             </div>
         </section>
         <!-- End Portfolio Section -->
@@ -634,14 +763,14 @@
                                 <i class="icofont-google-map"></i>
                                 <h4>Location:</h4>
                                 <p>
-                                    {{$profile->address}}
+                                    {{ $profile->address }}
                                 </p>
                             </div>
 
                             <div class="email">
                                 <i class="icofont-envelope"></i>
                                 <h4>Email:</h4>
-                                <p>{{$profile->user->email}}</p>
+                                <p>{{ $profile->user->email }}</p>
                             </div>
 
                             <div class="phone">

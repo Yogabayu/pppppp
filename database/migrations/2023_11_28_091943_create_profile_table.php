@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->longText('desc');
             $table->string('telp');
+            $table->string('tag')->comment('blink teks di header');
             $table->string('photo1')->comment('photo formal');
             $table->string('photo2')->comment('photo santai');
             $table->string('website');

@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('title', 'Skill')
+@section('title', 'Project')
 
 @push('style')
     <link rel="stylesheet" href="{{ asset('stisla/library/jqvmap/dist/jqvmap.min.css') }}">
@@ -32,9 +32,9 @@
                                                 <th class="text-center">
                                                     No
                                                 </th>
-                                                <th>Name</th>
-                                                {{-- <th>Value</th> --}}
-                                                <th>Icon</th>
+                                                <th>Photo</th>
+                                                <th>Judul</th>
+                                                <th>Deskripsi singkat</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -42,35 +42,35 @@
                                             @php
                                                 $no = 1;
                                             @endphp
-                                            @foreach ($skills as $skill)
+                                            @foreach ($projects as $project)
                                                 <tr>
                                                     <td class="text-center">
                                                         {{ $no++ }}
                                                     </td>
+                                                   <td>
+                                                    <img src="{{ $project->photo }}" alt="Project Photo" style="max-width: 100px;">
+                                                </td>
                                                     <td>
-                                                        {{ $skill->name }}
+                                                        {{ $project->title }}
                                                     </td>
-                                                    {{-- <td>
-                                                        {{ $skill->value ?? 'null' }}
-                                                    </td> --}}
                                                     <td>
-                                                        <img src="{{ $skill->icon }}" style="max-width: 25px">
+                                                        {{ $project->short_desc }}
                                                     </td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" title="Edit" data-toggle="modal"
-                                                            data-target="#detailModal{{ $skill->id }}"
+                                                            data-target="#detailModal{{ $project->id }}"
                                                             data-backdrop="false">
                                                             <i class="fas fa-pen"></i>
                                                         </a>
                                                         <button class="btn btn-danger btn-sm" title="Delete"
-                                                            onclick="confirmDelete('{{ route('skill.destroy', $skill->id) }}')">
+                                                            onclick="confirmDelete('{{ route('project.destroy', $project->id) }}')">
                                                             <i class="fas fa-trash-alt"></i>
                                                         </button>
                                                     </td>
                                                 </tr>
-                                                @include('admin.pages.modal.update-skill', [
+                                                {{-- @include('admin.pages.modal.update-skill', [
                                                     'dataId' => $skill->id,
-                                                ])
+                                                ]) --}}
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -85,10 +85,10 @@
         <!-- Modal -->
         <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true" style="z-index: 9999">
-            <div class="modal-dialog " role="document">
-                <form action="{{ route('skill.store') }}" method="post">
+            <div class="modal-dialog" role="document">
+                <form action="{{ route('project.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('post')
+                    @method('POST')
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">New Data</h5>
@@ -98,29 +98,47 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="exportType">Name Skill</label>
+                                <label for="title">Judul</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <i class="fas fa-person"></i>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Nama Skill" name="name"
+                                    <input type="text" class="form-control" placeholder="Judul Project" name="title"
                                         required>
                                 </div>
                             </div>
-
                             <div class="form-group">
-                                <label for="exportType">Icon Skill</label>
+                                <label for="short_desc">Deskripsi singkat</label>
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-person"></i>
-                                        </div>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="Link icon Skill" name="icon"
-                                        required>
+                                    <input type="text" class="form-control" name="short_desc" required>
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="long_desc">Deskripsi lengkap</label>
+                                <div class="input-group">
+                                    <textarea name="long_desc" id="long_desc" cols="30" rows="10" class="summernote" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="link">Link project: </label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="link" id="link">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="photo">Photo project: </label>
+                                <div class="input-group">
+                                    <input type="file" class="form-control" name="photo" id="photo" accept=".jpeg, .png">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select name="status" id="status" class="form-control">
+                                    <option value="1">Ditampilkan</option>
+                                    <option value="0">Disembunyikan</option>
+                                </select>
                             </div>
                         </div>
                         <div class="modal-footer">

@@ -86,9 +86,9 @@ class ProfileController extends Controller
                 'linkedin' => $request->input('linkedin'),
                 'freelance' => $request->input('freelance'),
                 'address' => $request->input('address'),
+                'tag' => $request->input('tag'),
             ]);
 
-            // Handle file uploads (if present)
             if ($request->hasFile('photo1')) {
                 $photo1Path = $request->file('photo1')->storeAs('photos/photo1', 'photo1.jpg', 'public');
                 $profile->photo1 = $photo1Path;

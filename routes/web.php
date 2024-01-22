@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\SoftSkillController;
 use App\Http\Controllers\WelcomeController;
@@ -51,4 +52,7 @@ Route::middleware('auth')->group(function () {
 
     //softskill
     Route::resource('softskill', SoftSkillController::class);
+
+    //project
+    Route::resource('project', ProjectController::class);
 });
