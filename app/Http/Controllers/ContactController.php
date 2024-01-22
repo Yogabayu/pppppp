@@ -23,7 +23,7 @@ class ContactController extends Controller
         $contact->message = $request->message;
 
         Mail::send('components.contact', ['name' => $request->name, 'email' => $request->email, 'messages' => $request->message,],  function ($message) use ($request) {
-            $message->from('pengaduan@bankarthaya.com', 'Administrator');
+            // $message->from('pengaduan@bankarthaya.com', 'Administrator');
             $message->to($request->email, 'Admin');
             $message->subject('Contact Email');
         });

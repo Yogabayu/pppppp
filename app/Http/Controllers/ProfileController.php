@@ -61,6 +61,19 @@ class ProfileController extends Controller
     public function update(ProfileRequest $request, $id)
     {
         try {
+            $request->validate([
+                'website' => 'url|nullable',
+                'twitter' => 'url|nullable',
+                'facebook' => 'url|nullable',
+                'instagram' => 'url|nullable',
+                'linkedin' => 'url|nullable',
+            ], [
+                'website.url' => 'harus pakai https://',
+                'twitter.url' => 'harus pakai https://',
+                'facebook.url' => 'harus pakai https://',
+                'instagram.url' => 'harus pakai https://',
+                'linkedin.url' => 'harus pakai https://',
+            ]);
             $profile = Profile::where('id', $id)->first();
 
             if (!$profile) {
