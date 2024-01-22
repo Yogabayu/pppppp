@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
@@ -26,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // })->name('welcome');
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+Route::post('contactme', [ContactController::class, 'contactme'])->name('contactme');
 
 Route::get('/admin', function () {
     return view('admin.login');

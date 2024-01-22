@@ -11,17 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('educations', function (Blueprint $table) {
+        Schema::create('contactme', function (Blueprint $table) {
             $table->id();
-            $table->uuid('user_uuid');
-            $table->string('sekolah');
-            $table->string('jurusan');
-            $table->date('start');
-            $table->date('end');
-            $table->longText('desc');
+            $table->string('name');
+            $table->string('email');
+            $table->longText('message');
             $table->timestamps();
-
-            $table->foreign('user_uuid')->references('uuid')->on('users');
         });
     }
 
@@ -30,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('educations');
+        Schema::dropIfExists('contactme');
     }
 };

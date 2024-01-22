@@ -47,9 +47,10 @@
                                                     <td class="text-center">
                                                         {{ $no++ }}
                                                     </td>
-                                                   <td>
-                                                    <img src="{{ $project->photo }}" alt="Project Photo" style="max-width: 100px;">
-                                                </td>
+                                                    <td>
+                                                        <img src="{{ Storage::url('photos/project/') . $project->photo }}"
+                                                            alt="Project Photo" style="max-width: 100px;">
+                                                    </td>
                                                     <td>
                                                         {{ $project->title }}
                                                     </td>
@@ -68,9 +69,9 @@
                                                         </button>
                                                     </td>
                                                 </tr>
-                                                {{-- @include('admin.pages.modal.update-skill', [
-                                                    'dataId' => $skill->id,
-                                                ]) --}}
+                                                @include('admin.pages.modal.update-project', [
+                                                    'dataId' => $project->id,
+                                                ])
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -130,7 +131,8 @@
                             <div class="form-group">
                                 <label for="photo">Photo project: </label>
                                 <div class="input-group">
-                                    <input type="file" class="form-control" name="photo" id="photo" accept=".jpeg, .png">
+                                    <input type="file" class="form-control" name="photo" id="photo"
+                                        accept=".jpeg, .png">
                                 </div>
                             </div>
                             <div class="form-group">

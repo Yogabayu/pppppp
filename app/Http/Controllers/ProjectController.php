@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Portofolios;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -40,7 +41,7 @@ class ProjectController extends Controller
                 'title' => 'required',
                 'short_desc' => 'required',
                 'long_desc' => 'required',
-                'link' => 'url',
+                'link' => 'url|nullable',
                 'status' => 'required',
                 'photo' => 'required|max:2048',
             ], [
@@ -62,8 +63,10 @@ class ProjectController extends Controller
             $project->link = $request->link;
             $project->status = $request->status;
 
-            $photoPath = $request->file('photo')->store('photos/project', 'public');
-            $project->photo = $photoPath;
+            $extension = $request->file('photo')->extension();
+            $imgname = date('dmyHis') . '.' . $extension;
+            $path = $request->file('photo')->storeAs('public/photos/project', $imgname);
+            $project->photo = $imgname;
 
             $project->save();
 
@@ -95,7 +98,45 @@ class ProjectController extends Controller
     public function update(Request $request, string $id)
     {
         try {
-            //code...
+            $request->validate([
+                'title' => 'required',
+                'short_desc' => 'required',
+                'long_desc' => 'required',
+                'link' => 'url|nullable',
+                'status' => 'required',
+                'photo' => 'max:2048',
+            ], [
+                'title.required' => 'Judul Project is required.',
+                'short_desc.required' => 'Deskripsi singkat is required.',
+                'long_desc.required' => 'Deskripsi lengkap is required.',
+                'status.required' => 'Status is required.',
+                'link.url' => 'Link project must be a valid URL.',
+                'photo.max' => 'The file must be less than 2048 kilobytes.',
+            ]);
+
+            $project = Portofolios::findOrFail($id);
+            $project->user_uuid = auth()->user()->uuid;
+            $project->title = $request->title;
+            $project->short_desc = $request->short_desc;
+            $project->long_desc = $request->long_desc;
+            $project->link = $request->link;
+            $project->status = $request->status;
+
+            if ($request->hasFile('photo')) {
+                $extension = $request->file('photo')->extension();
+                $imgname = date('dmyHis') . '.' . $extension;
+                $path = $request->file('photo')->storeAs('public/photos/project', $imgname);
+
+                if ($project->photo) {
+                    Storage::delete("public/photos/project/{$project->photo}");
+                }
+
+                $project->photo = $imgname;
+            }
+
+            $project->save();
+
+            return redirect()->back()->with('success', 'Berhasil update data');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
@@ -107,7 +148,18 @@ class ProjectController extends Controller
     public function destroy(string $id)
     {
         try {
-            //code...
+            $project = Portofolios::where('id', $id)->first();
+
+            if ($project) {
+                if ($project->photo) {
+                    Storage::delete("public/photos/project/{$project->photo}");
+                }
+
+                $project->delete();
+
+                return redirect()->back()->with('success', 'Berhasil menghapus data');
+            }
+            return redirect()->back()->with('error', 'Unknown User Data');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }

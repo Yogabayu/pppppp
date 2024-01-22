@@ -674,39 +674,84 @@
                         <div class="content-card">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-xs-12 col-sm-4">
-                                        <div class="card">
-                                            <a class="img-card"
-                                                href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html">
-                                                <img
-                                                    src="https://1.bp.blogspot.com/-Bii3S69BdjQ/VtdOpIi4aoI/AAAAAAAABlk/F0z23Yr59f0/s640/cover.jpg" />
-                                            </a>
-                                            <div class="card-content-card">
-                                                <h4 class="card-title-card">
-                                                    <a
-                                                        href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html">
-                                                        Bootstrap 3 Carousel FadeIn Out Effect
-                                                    </a>
-                                                </h4>
-                                                <p class="">
-                                                    Tutorial to make a carousel bootstrap by adding more wonderful
-                                                    effect fadein ...
-                                                </p>
-                                            </div>
-                                            <div class="card-read-more-card">
-                                                <a href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html"
-                                                    class="btn btn-link btn-block">
-                                                    Read More
+
+                                    @foreach ($projects as $project)
+                                        <div class="col-xs-12 col-sm-4">
+                                            <div class="card">
+                                                <a class="img-card" href="#">
+                                                    <img
+                                                        src="{{ Storage::url('photos/project/') . $project->photo }}" />
                                                 </a>
+                                                <div class="card-content-card">
+                                                    <h4 class="card-title-card">
+                                                        <a href="#">
+                                                            {{ $project->title }}
+                                                        </a>
+                                                    </h4>
+                                                    <p class="">
+                                                        {{ $project->short_desc }}
+                                                    </p>
+                                                </div>
+                                                <div class="card-read-more-card">
+                                                    <button type="button" class="btn btn-link btn-block"
+                                                        data-toggle="modal"
+                                                        data-target="#modalProject{{ $project->id }}">
+                                                        Read More
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="modalProject{{ $project->id }}" tabindex="-1"
+                                            role="dialog" aria-labelledby="exampleModalCenterTitle"
+                                            aria-hidden="true" data-backdrop="false">
+                                            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle">Detail
+                                                            Project {{ $project->title }}</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <img class="img-fluid"
+                                                                        alt="{{ $project->title }}"
+                                                                        src="{{ Storage::url('photos/project/') . $project->photo }}" />
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <h4>{{ $project->title }}</h4>
+                                                                    <div style="text-align: justify;">
+                                                                        {!! $project->long_desc !!}
+                                                                    </div>
+                                                                    @if ($project->link)
+                                                                        <a href="{{ $project->link }}"
+                                                                            class="btn btn-primary"
+                                                                            target="_blank">Lihat Item</a>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary">Save
+                                                                changes</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-
             </div>
         </section>
         <!-- End Portfolio Section -->
@@ -782,7 +827,9 @@
                     </div>
 
                     <div class="col-lg-8 mt-5 mt-lg-0">
-                        <form action="#" method="post" role="form" class="php-email-form">
+                        <form action="{{ route('contactme') }}" method="post" role="form"
+                            class="php-email-form">
+                            @csrf
                             <div class="form-row">
                                 <div class="col-md-6 form-group">
                                     <input type="text" name="name" class="form-control" id="name"
@@ -804,10 +851,16 @@
                             </div>
                             <div class="mb-3">
                                 <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">
-                                    Your message has been sent. Thank you!
-                                </div>
+                                @if (session('error'))
+                                    <div class="error-message">
+                                        {{ session('error') }}
+                                    </div>
+                                @else
+                                    <div class="sent-message">
+                                        Your message has been sent. Thank you!
+                                    </div>
+                                @endif
+
                             </div>
                             <div class="text-center">
                                 <button type="submit">Kirim Pesan</button>
@@ -858,7 +911,7 @@
     <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
+    {{-- <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script> --}}
     <script src="{{ asset('assets/vendor/waypoints/jquery.waypoints.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/counterup/counterup.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>

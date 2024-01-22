@@ -111,7 +111,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="exportType">Icon Skill</label>
+                                <label for="exportType">Icon Skill (<a href="https://www.vectorlogo.zone/" target="_blank" rel="noopener noreferrer">vector logo</a>)</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
