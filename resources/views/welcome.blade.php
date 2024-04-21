@@ -697,7 +697,7 @@
                                             <div class="card">
                                                 <a class="img-card" href="#">
                                                     <img
-                                                        src="{{ Storage::url('photos/project/') . $project->photo }}" />
+                                                        src="{{ asset('photos/project/' . $project->photo) }}" />
                                                 </a>
                                                 <div class="card-content-card">
                                                     <h4 class="card-title-card">
@@ -739,7 +739,7 @@
                                                                 <div class="col-md-6">
                                                                     <img class="img-fluid"
                                                                         alt="{{ $project->title }}"
-                                                                        src="{{ Storage::url('photos/project/') . $project->photo }}" />
+                                                                        src="{{ asset('photos/project/' . $project->photo) }}"  />
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <h4>{{ $project->title }}</h4>
