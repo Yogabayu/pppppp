@@ -404,290 +404,6 @@
                     <h2>Portofolio</h2>
                     <p>Beberapa Koleksi Dari Hasil Saya selama ini</p>
                 </div>
-
-                {{-- <div class="row">
-                    <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
-                        <ul id="portfolio-flters">
-                            <li data-filter="*" class="filter-active">Semua</li>
-                            <li data-filter=".filter-web">Website</li>
-                            <li data-filter=".filter-card">Alat</li>
-                            <li data-filter=".filter-app">Aplikasi Android</li>
-                        </ul>
-                    </div>
-                </div> --}}
-
-                {{-- <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-                    <!-- website rs-->
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('assets/img/portfolio/webrs/homePage.PNG') }}" class="img-fluid"
-                                alt="" />
-                            <div class="portfolio-info">
-                                <h4>Website</h4>
-                                <p>Tampilan website RSUD Kertosono</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('assets/img/portfolio/webrs/homePage.PNG') }}"
-                                        data-gall="portfolioGallery" class="venobox" title="App 1"><i
-                                            class="bx bx-plus"></i></a>
-                                    <a href="#" data-gall="portfolioDetailsGallery" data-vbtype="iframe"
-                                        class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- website rs-->
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('assets/img/portfolio/webrs/blog.PNG') }}" class="img-fluid"
-                                alt="" />
-                            <div class="portfolio-info">
-                                <h4>Website</h4>
-                                <p>Tampilan website RSUD Kertosono</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('assets/img/portfolio/webrs/blog.PNG') }}"
-                                        data-gall="portfolioGallery" class="venobox" title="App 1"><i
-                                            class="bx bx-plus"></i></a>
-                                    <a href="#" data-gall="portfolioDetailsGallery" data-vbtype="iframe"
-                                        class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- website rs-->
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('assets/img/portfolio/webrs/pelayanan.PNG') }}" class="img-fluid"
-                                alt="" />
-                            <div class="portfolio-info">
-                                <h4>Website</h4>
-                                <p>Tampilan website RSUD Kertosono</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('assets/img/portfolio/webrs/pelayanan.PNG') }}"
-                                        data-gall="portfolioGallery" class="venobox" title="App 1"><i
-                                            class="bx bx-plus"></i></a>
-                                    <a href="#" data-gall="portfolioDetailsGallery" data-vbtype="iframe"
-                                        class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- website-->
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('assets/img/portfolio/web_cuacaku/homepage.png') }}" class="img-fluid"
-                                alt="" />
-                            <div class="portfolio-info">
-                                <h4>Website</h4>
-                                <p>Tampilan</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('assets/img/portfolio/web_cuacaku/homepage.png') }}"
-                                        data-gall="portfolioGallery" class="venobox" title="App 1"><i
-                                            class="bx bx-plus"></i></a>
-                                    <a href="#" data-gall="portfolioDetailsGallery" data-vbtype="iframe"
-                                        class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- alat -->
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('assets/img/portfolio/foto_alat/1.jpg') }}" class="img-fluid"
-                                alt="" />
-                            <div class="portfolio-info">
-                                <h4>Alat Pengukur Cuaca</h4>
-                                <p>Alat IoT</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('assets/img/portfolio/foto_alat/1.jpg') }}"
-                                        data-gall="portfolioGallery" class="venobox" title="Web 3"><i
-                                            class="bx bx-plus"></i></a>
-                                    <a href="#" data-gall="portfolioDetailsGallery" data-vbtype="iframe"
-                                        class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- android -->
-                    <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('assets/img/portfolio/android/1.jpg') }}" class="img-fluid"
-                                alt="" />
-                            <div class="portfolio-info">
-                                <h4>Applikasi Android</h4>
-                                <p>App</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('assets/img/portfolio/android/1.jpg') }}"
-                                        data-gall="portfolioGallery" class="venobox" title="App 2"><i
-                                            class="bx bx-plus"></i></a>
-                                    <a href="#" data-gall="portfolioDetailsGallery" data-vbtype="iframe"
-                                        class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- android -->
-                    <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('assets/img/portfolio/android/2.png') }}" class="img-fluid"
-                                alt="" />
-                            <div class="portfolio-info">
-                                <h4>Applikasi Android</h4>
-                                <p>App</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('assets/img/portfolio/android/2.png') }}"
-                                        data-gall="portfolioGallery" class="venobox" title="App 2"><i
-                                            class="bx bx-plus"></i></a>
-                                    <a href="#" data-gall="portfolioDetailsGallery" data-vbtype="iframe"
-                                        class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--website-->
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('assets/img/portfolio/web_cuacaku/2.png') }}" class="img-fluid"
-                                alt="" />
-                            <div class="portfolio-info">
-                                <h4>Website</h4>
-                                <p>Tampilan</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('assets/img/portfolio/web_cuacaku/2.png') }}"
-                                        data-gall="portfolioGallery" class="venobox" title="App 1"><i
-                                            class="bx bx-plus"></i></a>
-                                    <a href="#" data-gall="portfolioDetailsGallery" data-vbtype="iframe"
-                                        class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--alat-->
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('assets/img/portfolio/foto_alat/2.jpg') }}" class="img-fluid"
-                                alt="" />
-                            <div class="portfolio-info">
-                                <h4>Alat Pengukur Cuaca</h4>
-                                <p>Alat IoT</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('assets/img/portfolio/foto_alat/2.jpg') }}"
-                                        data-gall="portfolioGallery" class="venobox" title="Web 3"><i
-                                            class="bx bx-plus"></i></a>
-                                    <a href="#" data-gall="portfolioDetailsGallery" data-vbtype="iframe"
-                                        class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- android -->
-                    <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('assets/img/portfolio/android/3.png') }}" class="img-fluid"
-                                alt="" />
-                            <div class="portfolio-info">
-                                <h4>Applikasi Android</h4>
-                                <p>App</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('assets/img/portfolio/android/3.png') }}"
-                                        data-gall="portfolioGallery" class="venobox" title="App 2"><i
-                                            class="bx bx-plus"></i></a>
-                                    <a href="#" data-gall="portfolioDetailsGallery" data-vbtype="iframe"
-                                        class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--website-->
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('assets/img/portfolio/web_cuacaku/4.png') }}" class="img-fluid"
-                                alt="" />
-                            <div class="portfolio-info">
-                                <h4>Website</h4>
-                                <p>Tampilan</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('assets/img/portfolio/web_cuacaku/4.png') }}"
-                                        data-gall="portfolioGallery" class="venobox" title="App 1"><i
-                                            class="bx bx-plus"></i></a>
-                                    <a href="#" data-gall="portfolioDetailsGallery" data-vbtype="iframe"
-                                        class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--website-->
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('assets/img/portfolio/web_cuacaku/5.png') }}" class="img-fluid"
-                                alt="" />
-                            <div class="portfolio-info">
-                                <h4>Website</h4>
-                                <p>Tampilan</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('assets/img/portfolio/web_cuacaku/5.png') }}"
-                                        data-gall="portfolioGallery" class="venobox" title="App 1"><i
-                                            class="bx bx-plus"></i></a>
-                                    <a href="#" data-gall="portfolioDetailsGallery" data-vbtype="iframe"
-                                        class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--website-->
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('assets/img/portfolio/web_cuacaku/3.png') }}" class="img-fluid"
-                                alt="" />
-                            <div class="portfolio-info">
-                                <h4>Website</h4>
-                                <p>Tampilan</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('assets/img/portfolio/web_cuacaku/3.png') }}"
-                                        data-gall="portfolioGallery" class="venobox" title="App 1"><i
-                                            class="bx bx-plus"></i></a>
-                                    <a href="#" data-gall="portfolioDetailsGallery" data-vbtype="iframe"
-                                        class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--alat-->
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('assets/img/portfolio/foto_alat/3.jpg') }}" class="img-fluid"
-                                alt="" />
-                            <div class="portfolio-info">
-                                <h4>Alat Pengukur Cuaca</h4>
-                                <p>Alat IoT</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('assets/img/portfolio/foto_alat/3.jpg') }}"
-                                        data-gall="portfolioGallery" class="venobox" title="Web 3"><i
-                                            class="bx bx-plus"></i></a>
-                                    <a href="#" data-gall="portfolioDetailsGallery" data-vbtype="iframe"
-                                        class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--alat-->
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('assets/img/portfolio/foto_alat/4.jpg') }}" class="img-fluid"
-                                alt="" />
-                            <div class="portfolio-info">
-                                <h4>Alat Pengukur Cuaca</h4>
-                                <p>Alat IoT</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('assets/img/portfolio/foto_alat/4.jpg') }}"
-                                        data-gall="portfolioGallery" class="venobox" title="Web 3"><i
-                                            class="bx bx-plus"></i></a>
-                                    <a href="#" data-gall="portfolioDetailsGallery" data-vbtype="iframe"
-                                        class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
                 <section class="wrapper-card">
                     <div class="container-fostrap-card">
                         <div class="content-card">
@@ -710,13 +426,13 @@
                                                         {{ $project->short_desc }}
                                                     </p>
                                                 </div>
-                                                <div class="card-read-more-card">
+                                                {{-- <div class="card-read-more-card">
                                                     <button type="button" class="btn btn-link btn-block"
                                                         data-toggle="modal"
                                                         data-target="#modalProject{{ $project->id }}">
                                                         Read More
                                                     </button>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
 
@@ -892,6 +608,12 @@
                     </div>
 
                     <div class="col-lg-8 mt-5 mt-lg-0">
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
                         <form action="{{ route('contactme') }}" method="post" role="form"
                             class="php-email-form">
                             @csrf
