@@ -131,8 +131,8 @@
                             <div class="form-group">
                                 <label for="photo">Photo project: </label>
                                 <div class="input-group">
-                                    <input type="file" class="form-control" name="photo" id="photo"
-                                        accept=".jpeg, .png">
+                                    <input type="file" class="form-control" name="photo" id="photo" 
+                                    accept=".jpeg, .png, .jpg">
                                 </div>
                             </div>
                             <div class="form-group">

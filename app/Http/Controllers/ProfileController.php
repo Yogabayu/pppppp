@@ -103,11 +103,13 @@ class ProfileController extends Controller
             ]);
 
             if ($request->hasFile('photo1')) {
+                Storage::delete('public/' . $profile->photo1);
                 $photo1Path = $request->file('photo1')->storeAs('photos/photo1', 'photo1.jpg', 'public');
                 $profile->photo1 = $photo1Path;
             }
-
+    
             if ($request->hasFile('photo2')) {
+                Storage::delete('public/' . $profile->photo2);
                 $photo2Path = $request->file('photo2')->storeAs('photos/photo2', 'photo2.jpg', 'public');
                 $profile->photo2 = $photo2Path;
             }

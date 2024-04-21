@@ -166,7 +166,7 @@
                                     <div class="form-group">
                                         <img alt="image" src="{{ asset('storage/' . $profile->photo2) }}"
                                             class="mx-auto d-block img-fluid" style="max-width: 20%; max-height: 20%;">
-                                        <label>Photo Santai</label>
+                                        <label>Photo Formal</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
@@ -184,7 +184,7 @@
                                     <div class="form-group">
                                         <img alt="image" src="{{ asset('storage/' . $profile->photo1) }}"
                                             class="mx-auto d-block img-fluid" style="max-width: 20%; max-height: 20%;">
-                                        <label>Photo Formal</label>
+                                        <label>Photo Santai</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">

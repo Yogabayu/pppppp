@@ -43,7 +43,7 @@ class ProjectController extends Controller
                 'long_desc' => 'required',
                 'link' => 'url|nullable',
                 'status' => 'required',
-                'photo' => 'required|max:2048',
+                'photo' => 'required',
             ], [
                 'title.required' => 'Judul Project is required.',
                 'short_desc.required' => 'Deskripsi singkat is required.',
@@ -51,7 +51,6 @@ class ProjectController extends Controller
                 'status.required' => 'Status is required.',
                 'link.url' => 'Link project must be a valid URL.',
                 'photo.required' => 'Photo project is required.',
-                'photo.max' => 'The file must be less than 2048 kilobytes.',
             ]);
             // dd($request->all());
 

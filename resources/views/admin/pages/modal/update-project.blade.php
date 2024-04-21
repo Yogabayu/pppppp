@@ -47,7 +47,7 @@
                         <label for="photo">Photo project: </label>
                         <div class="input-group">
                             <input type="file" class="form-control" name="photo" id="photo"
-                                accept=".jpeg, .png">
+                                accept=".jpeg, .png, .jpg">
                         </div>
                     </div>
                     <div class="form-group">

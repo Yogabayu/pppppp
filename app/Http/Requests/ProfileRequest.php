@@ -31,8 +31,8 @@ class ProfileRequest extends FormRequest
             "instagram" => "required",
             "linkedin" => "required",
             "freelance" => "required",
-            "photo1" => "max:2048|mimes:png,jpg",
-            "photo2" => "max:2048|mimes:png,jpg",
+            "photo1" => "mimes:png,jpg",
+            "photo2" => "mimes:png,jpg",
         ];
     }
 }
