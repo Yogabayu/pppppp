@@ -765,6 +765,7 @@
                                         </div> --}}
                                         <!-- Modal -->
                                         <!-- Modal -->
+                                        <!-- Modal -->
                                         <div class="modal fade" id="modalProject{{ $project->id }}" tabindex="-1"
                                             role="dialog" aria-labelledby="exampleModalCenterTitle"
                                             aria-hidden="true" data-backdrop="false">
@@ -772,22 +773,25 @@
                                                 role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLongTitle">
+                                                        <h5 class="modal-title text-wrap" id="exampleModalLongTitle">
                                                             {{ $project->title }}</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
+                                                            <span aria-hidden="true">×</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <div class="container">
+                                                        <div class="container-fluid">
+                                                            <!-- Ganti 'container' dengan 'container-fluid' -->
                                                             <div class="row">
-                                                                <div class="col-md-6">
+                                                                <div class="col-12 col-md-6">
+                                                                    <!-- Ganti 'col-md-6' dengan 'col-12 col-md-6' -->
                                                                     <img class="img-fluid"
                                                                         alt="{{ $project->title }}"
                                                                         src="{{ asset('storage/photos/project/' . $project->photo) }}" />
                                                                 </div>
-                                                                <div class="col-md-6">
+                                                                <div class="col-12 col-md-6">
+                                                                    <!-- Ganti 'col-md-6' dengan 'col-12 col-md-6' -->
                                                                     <div style="text-align: justify;">
                                                                         {!! $project->long_desc !!}
                                                                     </div>
