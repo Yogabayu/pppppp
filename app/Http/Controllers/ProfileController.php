@@ -58,9 +58,22 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ProfileRequest $request, $id)
+    public function update(Request $request, $id)
     {
         try {
+            $request->validate([
+                "name" => "required",
+                "desc" => "required",
+                "telp" => "required",
+                "website" => "required",
+                "twitter" => "required",
+                "facebook" => "required",
+                "instagram" => "required",
+                "linkedin" => "required",
+                "freelance" => "required",
+                "photo1" => "mimes:png,jpg",
+                "photo2" => "mimes:png,jpg",
+            ]);
             $profile = Profile::where('id', $id)->first();
 
             if (!$profile) {
@@ -69,10 +82,14 @@ class ProfileController extends Controller
 
             if ($request->hasFile('photo1')) {
                 Storage::delete('public/' . $profile->photo1);
+                $photo1Path = $request->file('photo1')->storeAs('photos/photo1', 'photo1.jpg', 'public');
+                $profile->photo1 = $photo1Path;
             }
 
             if ($request->hasFile('photo2')) {
                 Storage::delete('public/' . $profile->photo2);
+                $photo2Path = $request->file('photo2')->storeAs('photos/photo2', 'photo2.jpg', 'public');
+                $profile->photo2 = $photo2Path;
             }
 
             $profile->update([
@@ -86,17 +103,6 @@ class ProfileController extends Controller
                 'linkedin' => $request->input('linkedin'),
                 'freelance' => $request->input('freelance'),
             ]);
-
-            // Handle file uploads (if present)
-            if ($request->hasFile('photo1')) {
-                $photo1Path = $request->file('photo1')->storeAs('photos/photo1', 'photo1.jpg', 'public');
-                $profile->photo1 = $photo1Path;
-            }
-
-            if ($request->hasFile('photo2')) {
-                $photo2Path = $request->file('photo2')->storeAs('photos/photo2', 'photo2.jpg', 'public');
-                $profile->photo2 = $photo2Path;
-            }
 
             $profile->save();
 
