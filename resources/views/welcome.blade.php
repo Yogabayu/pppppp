@@ -697,7 +697,7 @@
                                             <div class="card">
                                                 <a class="img-card" href="#">
                                                     <img
-                                                        src="{{ asset('photos/project/' . $project->photo) }}" />
+                                                        src="{{ asset('storage/photos/project/' . $project->photo) }}" />
                                                 </a>
                                                 <div class="card-content-card">
                                                     <h4 class="card-title-card">
