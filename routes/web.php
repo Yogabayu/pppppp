@@ -53,7 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('experience', ExperienceController::class);
 
     //softskill
-    Route::resource('softskill', SoftSkillController::class);
+    // Route::resource('softskill', SoftSkillController::class);
 
     //project
     Route::resource('project', ProjectController::class);

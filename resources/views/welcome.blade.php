@@ -187,9 +187,9 @@
                 <li>
                     <a href="#portfolio"><i class="bx bx-book-content"></i> <span>Portofolio</span></a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="#services"><i class="bx bx-server"></i> <span>Keterampilan</span></a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="#contact"><i class="bx bx-envelope"></i> <span>Kontak</span></a>
                 </li>
@@ -774,7 +774,7 @@
         <!-- End Portfolio Section -->
 
         <!-- ======= Services Section ======= -->
-        <section id="services" class="services">
+        {{-- <section id="services" class="services">
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
                     <h2>keterampilan</h2>
@@ -808,7 +808,7 @@
                     @endforeach
                 </div>
             </div>
-        </section>
+        </section> --}}
         <!-- End Services Section -->
 
         <!-- ======= Contact Section ======= -->
