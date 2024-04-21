@@ -6,7 +6,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Online portfolio for {{ $profile->name }} - Yoga Bayu Anggana Pratama" />
-    <meta name="keywords" content="portfolio, {{ $profile->name }}, Yoga Bayu Anggana Pratama, web development, fullstack dev" />
+    <meta name="keywords"
+        content="portfolio, {{ $profile->name }}, Yoga Bayu Anggana Pratama, web development, fullstack dev" />
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Portfolio - {{ $profile->name }}" />
@@ -232,7 +233,8 @@
 
                 <div class="row">
                     <div class="col-lg-4 text-center">
-                        <img src="{{ asset('storage/' . $profile->photo2) }}" class="img-fluid" alt="photo profile" style="max-width: 80%; max-height: 80%; border-radius: 5%;" />
+                        <img src="{{ asset('storage/' . $profile->photo2) }}" class="img-fluid" alt="photo profile"
+                            style="max-width: 80%; max-height: 80%; border-radius: 5%;" />
                     </div>
                     <div class="col-lg-8 pt-4 pt-lg-0 content">
                         <h3>Data Diri:</h3>
@@ -719,7 +721,7 @@
                                         </div>
 
                                         <!-- Modal -->
-                                        <div class="modal fade" id="modalProject{{ $project->id }}" tabindex="-1"
+                                        {{-- <div class="modal fade" id="modalProject{{ $project->id }}" tabindex="-1"
                                             role="dialog" aria-labelledby="exampleModalCenterTitle"
                                             aria-hidden="true" data-backdrop="false">
                                             <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
@@ -757,6 +759,48 @@
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-dismiss="modal">Close</button>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> --}}
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="modalProject{{ $project->id }}" tabindex="-1"
+                                            role="dialog" aria-labelledby="exampleModalCenterTitle"
+                                            aria-hidden="true" data-backdrop="false">
+                                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle">
+                                                            {{ $project->title }}</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <img class="img-fluid"
+                                                                        alt="{{ $project->title }}"
+                                                                        src="{{ asset('storage/photos/project/' . $project->photo) }}" />
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div style="text-align: justify;">
+                                                                        {!! $project->long_desc !!}
+                                                                    </div>
+                                                                    @if ($project->link)
+                                                                        <a href="{{ $project->link }}"
+                                                                            class="btn btn-primary"
+                                                                            target="_blank">Lihat Item</a>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Close</button>
                                                     </div>
                                                 </div>
                                             </div>
