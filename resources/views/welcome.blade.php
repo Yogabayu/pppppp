@@ -691,7 +691,6 @@
                         <div class="content-card">
                             <div class="container">
                                 <div class="row">
-
                                     @foreach ($projects as $project)
                                         <div class="col-xs-12 col-sm-4">
                                             <div class="card">
@@ -739,7 +738,7 @@
                                                                 <div class="col-md-6">
                                                                     <img class="img-fluid"
                                                                         alt="{{ $project->title }}"
-                                                                        src="{{ asset('photos/project/' . $project->photo) }}"  />
+                                                                        src="{{ asset('storage/photos/project/' . $project->photo) }}"  />
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <h4>{{ $project->title }}</h4>
@@ -757,12 +756,11 @@
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-dismiss="modal">Close</button>
-                                                            <button type="button" class="btn btn-primary">Save
-                                                                changes</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
                                     @endforeach
                                 </div>
                             </div>
