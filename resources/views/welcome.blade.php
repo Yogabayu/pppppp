@@ -468,12 +468,12 @@
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <!-- Ganti 'col-md-6' dengan 'col-12 col-md-6' -->
-                                                    <div style="text-align: justify;">
+                                                    <div style="text-align: justify;" class="mb-3">
                                                         {!! $project->long_desc !!}
                                                     </div>
                                                     @if ($project->link)
                                                         <a href="{{ $project->link }}" class="btn btn-primary"
-                                                            target="_blank">Lihat Item</a>
+                                                            target="_blank">Github</a>
                                                     @endif
                                                 </div>
                                             </div>
