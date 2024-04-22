@@ -417,74 +417,78 @@
                         </div>
                     </div>
                 </section> --}}
-                @foreach ($projects as $project)
-                    <div class="col-xs-12 col-sm-4">
-                        <div class="card">
-                            <a class="img-card" href="#">
-                                <img src="{{ asset('storage/photos/project/' . $project->photo) }}" />
-                            </a>
-                            <div class="card-content-card">
-                                <h4 class="card-title-card">
-                                    <a href="#">
-                                        {{ $project->title }}
-                                    </a>
-                                </h4>
-                                <p class="">
-                                    {{ $project->short_desc }}
-                                </p>
-                            </div>
-                            <div class="card-read-more-card">
-                                <button type="button" class="btn btn-link btn-block" data-toggle="modal"
-                                    data-target="#modalProject{{ $project->id }}">
-                                    Read More
-                                </button>
+                <div class="row">
+                    @foreach ($projects as $project)
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="card">
+                                <a class="img-card" href="#">
+                                    <img src="{{ asset('storage/photos/project/' . $project->photo) }}" />
+                                </a>
+                                <div class="card-content-card">
+                                    <h4 class="card-title-card">
+                                        <a href="#">
+                                            {{ $project->title }}
+                                        </a>
+                                    </h4>
+                                    <p class="">
+                                        {{ $project->short_desc }}
+                                    </p>
+                                </div>
+                                <div class="card-read-more-card">
+                                    <button type="button" class="btn btn-link btn-block" data-toggle="modal"
+                                        data-target="#modalProject{{ $project->id }}">
+                                        Read More
+                                    </button>
 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Modal -->
-                    <div class="modal fade" id="modalProject{{ $project->id }}" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
-                        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable"
-                            role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title text-wrap" id="exampleModalLongTitle">
-                                        {{ $project->title }}</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="container-fluid">
-                                        <!-- Ganti 'container' dengan 'container-fluid' -->
-                                        <div class="row">
-                                            <div class="col-12 col-md-6">
-                                                <!-- Ganti 'col-md-6' dengan 'col-12 col-md-6' -->
-                                                <img class="img-fluid" alt="{{ $project->title }}"
-                                                    src="{{ asset('storage/photos/project/' . $project->photo) }}" />
-                                            </div>
-                                            <div class="col-12 col-md-6">
-                                                <!-- Ganti 'col-md-6' dengan 'col-12 col-md-6' -->
-                                                <div style="text-align: justify;">
-                                                    {!! $project->long_desc !!}
+                        <!-- Modal -->
+                        <div class="modal fade" id="modalProject{{ $project->id }}" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
+                            <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable"
+                                role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title text-wrap" id="exampleModalLongTitle">
+                                            {{ $project->title }}</h5>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <!-- Ganti 'container' dengan 'container-fluid' -->
+                                            <div class="row">
+                                                <div class="col-12 col-md-6">
+                                                    <!-- Ganti 'col-md-6' dengan 'col-12 col-md-6' -->
+                                                    <img class="img-fluid" alt="{{ $project->title }}"
+                                                        src="{{ asset('storage/photos/project/' . $project->photo) }}" />
                                                 </div>
-                                                @if ($project->link)
-                                                    <a href="{{ $project->link }}" class="btn btn-primary"
-                                                        target="_blank">Lihat Item</a>
-                                                @endif
+                                                <div class="col-12 col-md-6">
+                                                    <!-- Ganti 'col-md-6' dengan 'col-12 col-md-6' -->
+                                                    <div style="text-align: justify;">
+                                                        {!! $project->long_desc !!}
+                                                    </div>
+                                                    @if ($project->link)
+                                                        <a href="{{ $project->link }}" class="btn btn-primary"
+                                                            target="_blank">Lihat Item</a>
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-dismiss="modal">Close</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
+
             </div>
         </section>
         <!-- End Portfolio Section -->
