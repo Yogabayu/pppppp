@@ -434,13 +434,13 @@
                                         {{ $project->short_desc }}
                                     </p>
                                 </div>
-                                <div class="card-read-more-card">
+                                {{-- <div class="card-read-more-card">
                                     <button type="button" class="btn btn-link btn-block" data-toggle="modal"
                                         data-target="#modalProject{{ $project->id }}">
                                         Read More
                                     </button>
 
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <!-- Modal -->
