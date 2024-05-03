@@ -430,9 +430,12 @@
                                             {{ $project->title }}
                                         </a>
                                     </h4>
-                                    <p class="">
+                                    {{-- <p class="">
                                         {{ $project->short_desc }}
-                                    </p>
+                                    </p> --}}
+                                    <div style="text-align: justify;" class="mb-3">
+                                        {!! $project->long_desc !!}
+                                    </div>
                                 </div>
                                 {{-- <div class="card-read-more-card">
                                     <button type="button" class="btn btn-link btn-block" data-toggle="modal"
