@@ -1171,19 +1171,23 @@ main {
 }
 
 .project-modal-description p,
+.project-modal-description span {
+  text-indent: 0 !important;
+  margin: 0 0 10px 0;
+}
+
 .project-modal-description ul,
 .project-modal-description ol {
-  text-align: left;
-  padding-left: 0;
+  padding-left: 20px;
+  margin: 0 0 10px 0;
+}
+
+.project-modal-description li {
   text-indent: 0 !important;
 }
-
-
-.project-modal-description ul,
-.project-modal-description ol {
-  padding-left: 20px; /* Memberikan sedikit indentasi untuk list */
+.project-modal-description [style*="text-indent"] {
+  text-indent: 0 !important;
 }
-
 @media (max-width: 768px) {
   .project-modal-flex-container {
     flex-direction: column;

@@ -130,8 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   </div>
                   <div class="project-modal-details">
                     <h2 class="project-modal-title">${projectTitle}</h2>
-                    <div class="project-modal-description">
-                      <div id="projectDescription"></div>
+                    <div class="project-modal-description" id="projectDescription">
                     </div>
                   </div>
                 </div>
