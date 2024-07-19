@@ -111,18 +111,18 @@ overlay.addEventListener("click", testimonialsModalFunc);
 
 // modal
 document.addEventListener("DOMContentLoaded", function () {
-  var projectItems = document.querySelectorAll(".project-item a");
+    var projectItems = document.querySelectorAll(".project-item a");
 
-  projectItems.forEach(function (item) {
-      item.addEventListener("click", function (e) {
-          e.preventDefault();
+    projectItems.forEach(function (item) {
+        item.addEventListener("click", function (e) {
+            e.preventDefault();
 
-          var projectTitle = this.getAttribute("data-project-title");
-          var projectPhoto = this.getAttribute("data-project-photo");
-          const projectDesc = JSON.parse(this.getAttribute("data-project-desc"));
+            var projectTitle = this.getAttribute("data-project-title");
+            var projectPhoto = this.getAttribute("data-project-photo");
+            const projectDesc = JSON.parse(this.getAttribute("data-project-desc"));
 
-          Swal.fire({
-            html: `
+            Swal.fire({
+                html: `
               <div class="project-modal-content">
                 <div class="project-modal-flex-container">
                   <div class="project-modal-image">
@@ -136,29 +136,31 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
               </div>
             `,
-            didOpen: () => {
-              document.getElementById('projectDescription').innerHTML = DOMPurify.sanitize(projectDesc);
-              // Tambahkan kode ini
-              const descriptionElement = document.getElementById('projectDescription');
-              const allElements = descriptionElement.getElementsByTagName('*');
-              for (let element of allElements) {
-                element.style.removeProperty('text-indent');
-                if (element.hasAttribute('style') && element.getAttribute('style') === '') {
-                  element.removeAttribute('style');
-                }
-              }
-            },
-            width: "80%",
-            showConfirmButton: false,
-            showCloseButton: true,
-            customClass: {
-              container: "project-modal-container",
-              popup: "project-modal-popup",
-              closeButton: "project-modal-close",
-            },
-          });
-      });
-  });
+                didOpen: () => {
+                    document.getElementById('projectDescription').innerHTML = DOMPurify.sanitize(projectDesc);
+                    // Tambahkan kode ini
+                    const descriptionElement = document.getElementById('projectDescription');
+                    descriptionElement.innerHTML = DOMPurify.sanitize(projectDesc);
+
+                    const allElements = descriptionElement.getElementsByTagName('*');
+                    for (let element of allElements) {
+                        element.removeAttribute('style');
+                        element.removeAttribute('class');
+                    }
+
+                    // Terapkan styling yang Anda inginkan di sini
+                },
+                width: "80%",
+                showConfirmButton: false,
+                showCloseButton: true,
+                customClass: {
+                    container: "project-modal-container",
+                    popup: "project-modal-popup",
+                    closeButton: "project-modal-close",
+                },
+            });
+        });
+    });
 });
 
 // contact form variables
