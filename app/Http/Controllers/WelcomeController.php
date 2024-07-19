@@ -18,13 +18,13 @@ class WelcomeController extends Controller
     {
         $profile = Profile::with('user')->where('id', 1)->first();
         $skills = Skill::where('user_uuid', $profile->user_uuid)->get();
-        $edus = Education::where('user_uuid', $profile->user_uuid)->get();
+        $edus = Education::where('user_uuid', $profile->user_uuid)->orderBy('created_at', 'desc')->get();
         $works = Experience::where('user_uuid', $profile->user_uuid)->where('type', 1)->get();
         $apships = Experience::where('user_uuid', $profile->user_uuid)->where('type', 0)->get();
         $softskills = Softskill::where('user_uuid', $profile->user_uuid)->where('is_see', '!=', 0)->get();
         $projects = Portofolios::where('user_uuid', $profile->user_uuid)->where('status', '!=', 0)->get();
         // dd($skills);
 
-        return view('welcome', compact('profile', 'skills', 'edus', 'works', 'apships', 'softskills', 'projects'));
+        return view('welcome2', compact('profile', 'skills', 'edus', 'works', 'apships', 'softskills', 'projects'));
     }
 }

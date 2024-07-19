@@ -60,6 +60,7 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request, $id)
     {
+        // dd($request->all());
         try {
             $request->validate([
                 'website' => 'url|nullable',
@@ -74,18 +75,19 @@ class ProfileController extends Controller
                 'instagram.url' => 'harus pakai https://',
                 'linkedin.url' => 'harus pakai https://',
             ]);
-            $profile = Profile::where('id', $id)->first();
 
-            if (!$profile) {
-                return redirect()->back()->with('error', 'Profile not found.');
-            }
+            $profile = Profile::findOrFail($id);
 
             if ($request->hasFile('photo1')) {
                 Storage::delete('public/' . $profile->photo1);
+                $photo1Path = $request->file('photo1')->store('photos/photo1', 'public');
+                $profile->photo1 = $photo1Path;
             }
 
             if ($request->hasFile('photo2')) {
                 Storage::delete('public/' . $profile->photo2);
+                $photo2Path = $request->file('photo2')->store('photos/photo2', 'public');
+                $profile->photo2 = $photo2Path;
             }
 
             $profile->update([
@@ -101,18 +103,6 @@ class ProfileController extends Controller
                 'address' => $request->input('address'),
                 'tag' => $request->input('tag'),
             ]);
-
-            if ($request->hasFile('photo1')) {
-                $photo1Path = $request->file('photo1')->storeAs('photos/photo1', 'photo1.jpg', 'public');
-                $profile->photo1 = $photo1Path;
-            }
-
-            if ($request->hasFile('photo2')) {
-                $photo2Path = $request->file('photo2')->storeAs('photos/photo2', 'photo2.jpg', 'public');
-                $profile->photo2 = $photo2Path;
-            }
-
-            $profile->save();
 
             return redirect()->back()->with('success', 'Profile updated successfully.');
         } catch (\Exception $e) {
