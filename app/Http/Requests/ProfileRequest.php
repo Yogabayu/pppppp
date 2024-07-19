@@ -6,19 +6,11 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ProfileRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [
@@ -33,6 +25,17 @@ class ProfileRequest extends FormRequest
             "freelance" => "required",
             "photo1" => "mimes:png,jpg",
             "photo2" => "mimes:png,jpg",
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'website.url' => 'Website harus pakai https://',
+            'twitter.url' => 'Twitter harus pakai https://',
+            'facebook.url' => 'Facebook harus pakai https://',
+            'instagram.url' => 'Instagram harus pakai https://',
+            'linkedin.url' => 'LinkedIn harus pakai https://',
         ];
     }
 }
