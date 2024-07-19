@@ -138,6 +138,15 @@ document.addEventListener("DOMContentLoaded", function () {
             `,
             didOpen: () => {
               document.getElementById('projectDescription').innerHTML = DOMPurify.sanitize(projectDesc);
+              // Tambahkan kode ini
+              const descriptionElement = document.getElementById('projectDescription');
+              const allElements = descriptionElement.getElementsByTagName('*');
+              for (let element of allElements) {
+                element.style.removeProperty('text-indent');
+                if (element.hasAttribute('style') && element.getAttribute('style') === '') {
+                  element.removeAttribute('style');
+                }
+              }
             },
             width: "80%",
             showConfirmButton: false,

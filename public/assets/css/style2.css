@@ -1165,7 +1165,12 @@ main {
   text-align: left;
   margin-bottom: 15px;
 }
-
+.project-modal-description * {
+  text-indent: 0 !important;
+}
+.project-modal-description *[class] {
+  text-indent: 0 !important;
+}
 .project-modal-description {
   text-align: left;
 }
