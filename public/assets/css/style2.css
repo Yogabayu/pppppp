@@ -1196,7 +1196,7 @@ main {
 /* Tambahkan aturan ini jika masih ada masalah */
 .project-modal-description p[style*="text-indent"],
 .project-modal-description span[style*="text-indent"],
-.project-modal-description b[style*="text-indent"] {
+.project-modal-description p b[style*="text-indent"] {
   text-indent: 0 !important;
 }
 
