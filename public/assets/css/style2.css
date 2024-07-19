@@ -1175,7 +1175,9 @@ main {
 .project-modal-description ol {
   text-align: left;
   padding-left: 0;
+  text-indent: 0 !important;
 }
+
 
 .project-modal-description ul,
 .project-modal-description ol {
