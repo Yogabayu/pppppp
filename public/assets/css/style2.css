@@ -1171,7 +1171,9 @@ main {
 }
 
 .project-modal-description p,
-.project-modal-description span {
+.project-modal-description span,
+.project-modal-description b,
+.project-modal-description strong {
   text-indent: 0 !important;
   margin: 0 0 10px 0;
 }
@@ -1185,13 +1187,16 @@ main {
 .project-modal-description li {
   text-indent: 0 !important;
 }
+
+/* Tambahkan aturan ini untuk mengatasi masalah text-indent pada "Technology Used" */
 .project-modal-description [style*="text-indent"] {
   text-indent: 0 !important;
 }
-@media (max-width: 768px) {
-  .project-modal-flex-container {
-    flex-direction: column;
-  }
+
+/* Tambahkan aturan ini jika masih ada masalah */
+.project-modal-description p[style*="text-indent"],
+.project-modal-description span[style*="text-indent"] {
+  text-indent: 0 !important;
 }
 
 
