@@ -3,10 +3,30 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vCard - Personal Portfolio</title>
+    <meta name="description" content="Online portfolio for {{ $profile->name }} - Yoga Bayu Anggana Pratama" />
+    <meta name="keywords"
+        content="portfolio, {{ $profile->name }}, Yoga Bayu Anggana Pratama, web development, fullstack dev" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Portfolio - {{ $profile->name }}" />
+    <meta property="og:description"
+        content="Explore the online portfolio of {{ $profile->name }} - Yoga Bayu Anggana Pratama" />
+    <meta property="og:image" content="{{ asset('storage/' . $profile->photo1) }}" />
+    <!-- Add the URL to an image relevant to your portfolio -->
+    <meta property="og:url" content="{{ url('/') }}" />
+    <meta name="og:site_name" content="Portofolio" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Portfolio - {{ $profile->name }}" />
+    <meta name="twitter:description"
+        content="Explore the online portfolio of {{ $profile->name }} - Yoga Bayu Anggana Pratama" />
+    <meta name="twitter:image" content="{{ asset('storage/' . $profile->photo1) }}" />
+    <!-- Add the URL to an image relevant to your portfolio -->
+
+    <title>Portfolio - {{ $profile->name }}</title>
 
     <!--
     - favicon
