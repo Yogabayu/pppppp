@@ -6,7 +6,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Online portfolio for {{ $profile->name }} - Yoga Bayu Anggana Pratama" />
-    <meta name="keywords" content="portfolio, {{ $profile->name }}, Yoga Bayu Anggana Pratama, web development, fullstack dev" />
+    <meta name="keywords"
+        content="portfolio, {{ $profile->name }}, Yoga Bayu Anggana Pratama, web development, fullstack dev" />
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Portfolio - {{ $profile->name }}" />
@@ -772,6 +773,8 @@
             </div>
         </section>
         <!-- End Portfolio Section -->
+
+        
 
         <!-- ======= Services Section ======= -->
         <section id="services" class="services">

@@ -354,7 +354,12 @@ main {
 
 .avatar-box {
   background: var(--bg-gradient-onyx);
-  border-radius: 20px;
+  border-radius: 50px;
+}
+
+.avatar-box img {
+  border-radius: 0.5rem;
+  width: 3rem;
 }
 
 .info-content .name {
@@ -1135,6 +1140,53 @@ main {
   font-weight: var(--fw-300);
 }
 
+/* //modal */
+.project-modal-flex-container {
+  display: flex;
+  gap: 20px;
+}
+
+.project-modal-image {
+  flex: 0 0 40%; /* Sesuaikan lebar gambar sesuai kebutuhan */
+}
+
+.project-modal-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.project-modal-details {
+  flex: 1;
+  text-align: left; /* Memastikan semua konten rata kiri */
+}
+
+.project-modal-title {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.project-modal-description {
+  text-align: left;
+}
+
+.project-modal-description p,
+.project-modal-description ul,
+.project-modal-description ol {
+  text-align: left;
+  padding-left: 0;
+}
+
+.project-modal-description ul,
+.project-modal-description ol {
+  padding-left: 20px; /* Memberikan sedikit indentasi untuk list */
+}
+
+@media (max-width: 768px) {
+  .project-modal-flex-container {
+    flex-direction: column;
+  }
+}
 
 
 
@@ -1491,7 +1543,7 @@ textarea.form-input::-webkit-resizer {
   }
 
   .avatar-box img {
-    width: 120px;
+    width: 5rem;
   }
 
   .info-content .name {
@@ -2085,7 +2137,7 @@ textarea.form-input::-webkit-resizer {
   }
 
   .avatar-box img {
-    width: 150px;
+    width: 7.5rem;
   }
 
   .info-content .name {
@@ -2144,42 +2196,53 @@ textarea.form-input::-webkit-resizer {
   .skills-container {
     padding: 20px;
   }
-
+  
   .skills-row {
-    display: flex;
+    display: flex ;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 20px;
   }
-
+  
   .skill-item {
-    flex-basis: calc(33.333% - 20px);
     text-align: center;
     padding: 15px;
     box-sizing: border-box;
   }
-
+  
   .skill-icon {
     width: 60px;
     height: 60px;
     object-fit: contain;
+    text-align: center;
     margin-bottom: 10px;
+    margin-left: 2.5rem;
   }
-
+  
   .skill-name {
     margin: 0;
     font-size: 14px;
+    color: grey;
   }
-
-  @media (max-width: 768px) {
+  
+  /* Mobile: 2 items per row */
+  @media (max-width: 767px) {
     .skill-item {
-      flex-basis: calc(50% - 20px);
+      flex-basis: calc(50% - 10px);
     }
   }
-
-  @media (max-width: 480px) {
+  
+  /* Medium screens: 3 items per row */
+  @media (min-width: 768px) and (max-width: 1023px) {
     .skill-item {
-      flex-basis: 100%;
+      flex-basis: calc(33.333% - 13.333px);
+    }
+  }
+  
+  /* Laptop and larger screens: 4 items per row */
+  @media (min-width: 1024px) {
+    .skill-item {
+      flex-basis: calc(25% - 15px);
     }
   }
 

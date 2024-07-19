@@ -27,6 +27,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.3/purify.min.js"></script>
 </head>
 
 <body>
@@ -42,7 +45,7 @@
         <aside class="sidebar" data-sidebar>
             <div class="sidebar-info">
                 <figure class="avatar-box">
-                    <img src="{{ Storage::url($profile->photo2) }}" alt="Richard hanrick" width="80" />
+                    <img src="{{ Storage::url($profile->photo2) }}" alt="{{ $profile->name }}" />
                 </figure>
 
                 <div class="info-content">
@@ -98,18 +101,6 @@
                             <a href="tel:{{ $profile->telp }}" class="contact-link">{{ $profile->telp }}</a>
                         </div>
                     </li>
-
-                    {{-- <li class="contact-item">
-              <div class="icon-box">
-                <ion-icon name="calendar-outline"></ion-icon>
-              </div>
-
-              <div class="contact-info">
-                <p class="contact-title">Freelance</p>
-
-                <time datetime="1982-06-23">June 23, 1982</time>
-              </div>
-            </li> --}}
 
                     <li class="contact-item">
                         <div class="icon-box">
@@ -171,9 +162,9 @@
                         <button class="navbar-link" data-nav-link>Portfolio</button>
                     </li>
 
-                    <li class="navbar-item">
+                    {{-- <li class="navbar-item">
                         <button class="navbar-link" data-nav-link>Blog</button>
-                    </li>
+                    </li> --}}
 
                     <li class="navbar-item">
                         <button class="navbar-link" data-nav-link>Contact</button>
@@ -601,41 +592,23 @@
                     </ol>
                 </section>
 
-                {{-- <section class="skill">
-                    <h3 class="h3 skills-title">My skills</h3>
-                    <div class="skills-container content-card">
-                        <div class="col-3 justify-content-center">
-                          @foreach ($skills as $skill)
-                              <div class="col-3">
-                                  <div class="skill-item">
-                                      <div class="skill-icon">
-                                          <img src="{{ $skill->icon }}" alt="{{ $skill->name }}" />
-                                      </div>
-                                      <p class="skill-name">{{ $skill->name }}</p>
-                                  </div>
-                              </div>
-                          @endforeach
-                      </div>
-                    </div>
-                </section> --}}
-
                 <section class="skill">
-                  <h3 class="h3 skills-title">My skills</h3>
-                  <div class="skills-container content-card">
-                      <div class="skills-row">
-                          @foreach ($skills as $skill)
-                              <div class="skill-item">
-                                  <img src="{{ $skill->icon }}" alt="{{ $skill->name }}" class="skill-icon">
-                                  <p class="skill-name">{{ $skill->name }}</p>
-                              </div>
-                          @endforeach
-                          {{-- <div class="skill-item">
-                              <img src="path/to/icon1.png" alt="Skill 1" class="skill-icon">
-                              <p class="skill-name">Skill 1</p>
-                          </div> --}}
-                      </div>
-                  </div>
-              </section>
+                    <h3 class="h3 skills-title">My skills</h3>
+                    <div class="d-flex skills-container content-card">
+                        <div class="skills-row"
+                            style="display: flex ;
+                                    flex-wrap: wrap;
+                                    justify-content: space-between;
+                                    gap: 20px;">
+                            @foreach ($skills as $skill)
+                                <div class="skill-item">
+                                    <img src="{{ $skill->icon }}" alt="{{ $skill->name }}" class="skill-icon">
+                                    <p class="skill-name">{{ $skill->name }}</p>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </section>
             </article>
 
             <!--
@@ -648,7 +621,7 @@
                 </header>
 
                 <section class="projects">
-                    <ul class="filter-list">
+                    {{-- <ul class="filter-list">
                         <li class="filter-item">
                             <button class="active" data-filter-btn>All</button>
                         </li>
@@ -694,26 +667,31 @@
                                 <button data-select-item>Web development</button>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
 
                     <ul class="project-list">
-                        <li class="project-item active" data-filter-item data-category="web development">
-                            <a href="#">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </div>
+                        @foreach ($projects as $project)
+                            <li class="project-item active">
+                                <a href="#" data-project-id="{{ $project->id }}"
+                                    data-project-title="{{ $project->title }}"
+                                    data-project-photo="{{ Storage::url('photos/project/') . $project->photo }}"
+                                    data-project-desc="{{ json_encode($project->long_desc) }}">
+                                    <figure class="project-img">
+                                        <div class="project-item-icon-box">
+                                            <ion-icon name="eye-outline"></ion-icon>
+                                        </div>
+                                        <img src="{{ Storage::url('photos/project/') . $project->photo }}"
+                                            alt="{{ $project->title }}" loading="lazy"
+                                            style="width: 100%; height: 12rem;" />
+                                    </figure>
+                                    <h3 class="project-title">{{ $project->title }}</h3>
+                                    <p class="project-category">{{ $project->short_desc }}</p>
+                                </a>
+                            </li>
+                            
+                        @endforeach
 
-                                    <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy" />
-                                </figure>
-
-                                <h3 class="project-title">Finance</h3>
-
-                                <p class="project-category">Web development</p>
-                            </a>
-                        </li>
-
-                        <li class="project-item active" data-filter-item data-category="web development">
+                        <li class="project-item active">
                             <a href="#">
                                 <figure class="project-img">
                                     <div class="project-item-icon-box">
@@ -728,8 +706,8 @@
                                 <p class="project-category">Web development</p>
                             </a>
                         </li>
-
-                        <li class="project-item active" data-filter-item data-category="web design">
+                        {{--
+                        <li class="project-item active">
                             <a href="#">
                                 <figure class="project-img">
                                     <div class="project-item-icon-box">
@@ -745,7 +723,7 @@
                             </a>
                         </li>
 
-                        <li class="project-item active" data-filter-item data-category="applications">
+                        <li class="project-item active">
                             <a href="#">
                                 <figure class="project-img">
                                     <div class="project-item-icon-box">
@@ -759,9 +737,9 @@
 
                                 <p class="project-category">Applications</p>
                             </a>
-                        </li>
+                        </li> --}}
 
-                        <li class="project-item active" data-filter-item data-category="web design">
+                        {{-- <li class="project-item active" data-filter-item data-category="web design">
                             <a href="#">
                                 <figure class="project-img">
                                     <div class="project-item-icon-box">
@@ -839,16 +817,26 @@
 
                                 <p class="project-category">Web development</p>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
+
+                    {{-- modal --}}
+                    <div id="projectModal" class="modal">
+                        <div class="modal-content">
+                            <h2 id="modalTitle"></h2>
+                            <img id="modalImage" src="" alt="" />
+                            <div id="modalDescription"></div>
+                        </div>
+                    </div>
                 </section>
             </article>
+
 
             <!--
         - #BLOG
       -->
 
-            <article class="blog" data-page="blog">
+            {{-- <article class="blog" data-page="blog">
                 <header>
                     <h2 class="h2 article-title">Blog</h2>
                 </header>
@@ -1018,7 +1006,7 @@
                         </li>
                     </ul>
                 </section>
-            </article>
+            </article> --}}
 
             <!--
         - #CONTACT
@@ -1032,7 +1020,7 @@
                 <section class="mapbox" data-mapbox>
                     <figure>
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d718.8245296770816!2d111.41060941461708!3d-8.047657740591285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e79738aa04563f1%3A0xea4950097d3e05df!2syogabayuap.com!5e0!3m2!1sid!2sid!4v1721407746565!5m2!1sid!2sid"
                             width="400" height="300" loading="lazy"></iframe>
                     </figure>
                 </section>
@@ -1040,10 +1028,11 @@
                 <section class="contact-form">
                     <h3 class="h3 form-title">Contact Form</h3>
 
-                    <form action="#" class="form" data-form>
+                    <form action="{{ route('contactme') }}" class="form" method="post" data-form>
+                        @csrf
                         <div class="input-wrapper">
-                            <input type="text" name="fullname" class="form-input" placeholder="Full name"
-                                required data-form-input />
+                            <input type="text" name="name" class="form-input" placeholder="Full name"
+                                data-rule="minlen:4" required data-form-input />
 
                             <input type="email" name="email" class="form-input" placeholder="Email address"
                                 required data-form-input />
