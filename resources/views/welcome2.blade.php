@@ -622,7 +622,7 @@
                                     gap: 20px;">
                             @foreach ($skills as $skill)
                                 <div class="skill-item">
-                                    <img src="{{ $skill->icon }}" alt="{{ $skill->name }}" class="skill-icon">
+                                    <img src="{{ $skill->icon }}" alt="{{ $skill->name }}" class="skill-icon" style="width: 60px; height: 60px">
                                     <p class="skill-name">{{ $skill->name }}</p>
                                 </div>
                             @endforeach
