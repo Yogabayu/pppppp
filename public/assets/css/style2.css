@@ -1142,7 +1142,7 @@ main {
 
 /* //modal */
 .project-modal-flex-container {
-  display: flex;
+  display: block;
   gap: 20px;
 }
 
@@ -1157,7 +1157,7 @@ main {
 }
 
 .project-modal-details {
-  flex: 1;
+  /* flex: 1; */
   text-align: left; /* Memastikan semua konten rata kiri */
 }
 
