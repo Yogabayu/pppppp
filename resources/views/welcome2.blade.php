@@ -622,8 +622,8 @@
                                     gap: 20px;">
                             @foreach ($skills as $skill)
                                 <div class="skill-item">
-                                    <img src="{{ $skill->icon }}" alt="{{ $skill->name }}" class="skill-icon" style="width: 60px; height: 60px, margin-bottom: 10px">
-                                    <p class="skill-name" style="color:grey">{{ $skill->name }}</p>
+                                    <img src="{{ $skill->icon }}" alt="{{ $skill->name }}" class="skill-icon" style="width: 60px; height: 60px; ">
+                                    <p class="skill-name" style="color:grey;margin-top: 10px">{{ $skill->name }}</p>
                                 </div>
                             @endforeach
                         </div>
