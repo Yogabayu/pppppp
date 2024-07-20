@@ -1142,12 +1142,13 @@ main {
 
 /* //modal */
 .project-modal-flex-container {
-  display: block;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
 .project-modal-image {
-  flex: 0 0 40%; /* Sesuaikan lebar gambar sesuai kebutuhan */
+  width: 100%;
 }
 
 .project-modal-image img {
@@ -1157,20 +1158,14 @@ main {
 }
 
 .project-modal-details {
-  /* flex: 1; */
-  text-align: left; /* Memastikan semua konten rata kiri */
+  text-align: left;
 }
 
 .project-modal-title {
   text-align: left;
   margin-bottom: 15px;
 }
-.project-modal-description * {
-  text-indent: 0 !important;
-}
-.project-modal-description *[class] {
-  text-indent: 0 !important;
-}
+
 .project-modal-description {
   text-align: left;
 }
@@ -1178,7 +1173,10 @@ main {
 .project-modal-description p,
 .project-modal-description span,
 .project-modal-description b,
-.project-modal-description strong {
+.project-modal-description strong,
+.project-modal-description ul,
+.project-modal-description ol,
+.project-modal-description li {
   text-indent: 0 !important;
   margin: 0 0 10px 0;
 }
@@ -1186,19 +1184,9 @@ main {
 .project-modal-description ul,
 .project-modal-description ol {
   padding-left: 20px;
-  margin: 0 0 10px 0;
 }
 
-.project-modal-description li {
-  text-indent: 0 !important;
-}
-
-/* Tambahkan aturan ini untuk mengatasi masalah text-indent pada "Technology Used" */
-.project-modal-description [style*="text-indent"] {
-  text-indent: 0 !important;
-}
-
-/* Tambahkan aturan ini jika masih ada masalah */
+.project-modal-description [style*="text-indent"],
 .project-modal-description p[style*="text-indent"],
 .project-modal-description span[style*="text-indent"],
 .project-modal-description p b[style*="text-indent"] {
