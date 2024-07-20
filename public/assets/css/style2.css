@@ -2228,8 +2228,8 @@ textarea.form-input::-webkit-resizer {
   }
   
   .skill-icon {
-    width: 60px;
-    height: 60px;
+    width: 60px !important;
+    height: 60px !important;
     object-fit: contain;
     text-align: center;
     margin-bottom: 10px;
