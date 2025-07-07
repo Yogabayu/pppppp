@@ -7,6 +7,7 @@ use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\SoftSkillController;
 use App\Http\Controllers\WelcomeController;
@@ -28,6 +29,9 @@ use Illuminate\Support\Facades\Route;
 // })->name('welcome');
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Route::post('contactme', [ContactController::class, 'contactme'])->name('contactme');
+Route::get('reviews', [ReviewController::class, 'index'])->name('reviews');
+Route::get('reviews/create', [ReviewController::class, 'create'])->name('reviews.create');
+Route::post('reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
 Route::get('/admin', function () {
     return view('admin.login');
