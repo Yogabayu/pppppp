@@ -33,10 +33,20 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         try {
-            $review = Review::create($request->validated());
-            return response()->json($review, 201);
+            // dd($request->all());
+            $review = new Review();
+            $review->name = $request->input('name');
+            $review->email = $request->input('email');
+            $review->subject = $request->input('subject');
+            $review->message = $request->input('review');
+            $review->status = 'pending';
+            $review->ip_address = $request->ip();
+            $review->user_agent = $request->header('User-Agent');
+            $review->rating = $request->input('rating'); 
+            $review->save();
+            return redirect()->back()->with('success', 'Thank you! Your review has been submitted.');
         } catch (\Throwable $th) {
-            return response()->json(['error' => 'Failed to create review'], 500);
+            return redirect()->back()->with('error', 'Something went wrong. Please try again later.' . $th->getMessage());
         }
     }
 
