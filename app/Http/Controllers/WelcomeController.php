@@ -6,6 +6,7 @@ use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Portofolios;
 use App\Models\Profile;
+use App\Models\Review;
 use App\Models\Skill;
 use App\Models\Softskill;
 use App\Models\User;
@@ -23,8 +24,9 @@ class WelcomeController extends Controller
         $apships = Experience::where('user_uuid', $profile->user_uuid)->where('type', 0)->get();
         $softskills = Softskill::where('user_uuid', $profile->user_uuid)->where('is_see', '!=', 0)->get();
         $projects = Portofolios::where('user_uuid', $profile->user_uuid)->where('status', '!=', 0)->get();
-        // dd($skills);
+        $reviews = Review::where('status', 'approved')->get();
+        // dd($reviews);
 
-        return view('welcome2', compact('profile', 'skills', 'edus', 'works', 'apships', 'softskills', 'projects'));
+        return view('welcome2', compact('profile', 'skills', 'edus', 'works', 'apships', 'softskills', 'projects', 'reviews'));
     }
 }

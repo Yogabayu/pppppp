@@ -47,6 +47,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.3/purify.min.js"></script>
@@ -182,10 +186,6 @@
                         <button class="navbar-link" data-nav-link>Portfolio</button>
                     </li>
 
-                    {{-- <li class="navbar-item">
-                        <button class="navbar-link" data-nav-link>Blog</button>
-                    </li> --}}
-
                     <li class="navbar-item">
                         <button class="navbar-link" data-nav-link>Contact</button>
                     </li>
@@ -281,135 +281,46 @@
           - testimonials
         -->
 
-                {{-- <section class="testimonials">
-            <h3 class="h3 testimonials-title">Testimonials</h3>
+                <section class="testimonials">
+                    <h3 class="h3 testimonials-title">Testimonials</h3>
 
-            <ul class="testimonials-list has-scrollbar">
-              <li class="testimonials-item">
-                <div class="content-card" data-testimonials-item>
-                  <figure class="testimonials-avatar-box">
-                    <img
-                      src="{{ asset('assets/images/avatar-1.png') }}"
-                      alt="Daniel lewis"
-                      width="60"
-                      data-testimonials-avatar
-                    />
-                  </figure>
+                    <ul class="testimonials-list has-scrollbar">
+                        @foreach ($reviews as $review)
+                            <li class="testimonials-item">
+                                <div class="content-card" data-testimonials-item>
+                                    <figure class="testimonials-avatar-box">
+                                        <img src="{{ asset('assets/images/avatar-1.png') }}"
+                                            alt="{{ $review->name }}" width="60" data-testimonials-avatar />
+                                    </figure>
 
-                  <h4
-                    class="h4 testimonials-item-title"
-                    data-testimonials-title
-                  >
-                    Daniel lewis
-                  </h4>
+                                    <h4 class="h4 testimonials-item-title" data-testimonials-title>
+                                        {{ $review->name }} @for ($i = 1; $i <= 5; $i++)
+                                            @if ($i <= $review->rating)
+                                                <i class="fas fa-star text-warning"></i>
+                                            @else
+                                                <i class="far fa-star text-warning"></i>
+                                            @endif
+                                        @endfor
+                                    </h4>
 
-                  <div class="testimonials-text" data-testimonials-text>
-                    <p>
-                      Richard was hired to create a corporate identity. We were
-                      very pleased with the work done. She has a lot of
-                      experience and is very concerned about the needs of
-                      client. Lorem ipsum dolor sit amet, ullamcous cididt
-                      consectetur adipiscing elit, seds do et eiusmod tempor
-                      incididunt ut laborels dolore magnarels alia.
-                    </p>
-                  </div>
-                </div>
-              </li>
+                                    <div class="testimonials-text" data-testimonials-text>
+                                        <p>
+                                            {{ $review->message }}
+                                        </p>
+                                    </div>
 
-              <li class="testimonials-item">
-                <div class="content-card" data-testimonials-item>
-                  <figure class="testimonials-avatar-box">
-                    <img
-                      src="{{ asset('assets/images/avatar-2.png') }}"
-                      alt="Jessica miller"
-                      width="60"
-                      data-testimonials-avatar
-                    />
-                  </figure>
-
-                  <h4
-                    class="h4 testimonials-item-title"
-                    data-testimonials-title
-                  >
-                    Jessica miller
-                  </h4>
-
-                  <div class="testimonials-text" data-testimonials-text>
-                    <p>
-                      Richard was hired to create a corporate identity. We were
-                      very pleased with the work done. She has a lot of
-                      experience and is very concerned about the needs of
-                      client. Lorem ipsum dolor sit amet, ullamcous cididt
-                      consectetur adipiscing elit, seds do et eiusmod tempor
-                      incididunt ut laborels dolore magnarels alia.
-                    </p>
-                  </div>
-                </div>
-              </li>
-
-              <li class="testimonials-item">
-                <div class="content-card" data-testimonials-item>
-                  <figure class="testimonials-avatar-box">
-                    <img
-                      src="{{ asset('assets/images/avatar-3.png') }}"
-                      alt="Emily evans"
-                      width="60"
-                      data-testimonials-avatar
-                    />
-                  </figure>
-
-                  <h4
-                    class="h4 testimonials-item-title"
-                    data-testimonials-title
-                  >
-                    Emily evans
-                  </h4>
-
-                  <div class="testimonials-text" data-testimonials-text>
-                    <p>
-                      Richard was hired to create a corporate identity. We were
-                      very pleased with the work done. She has a lot of
-                      experience and is very concerned about the needs of
-                      client. Lorem ipsum dolor sit amet, ullamcous cididt
-                      consectetur adipiscing elit, seds do et eiusmod tempor
-                      incididunt ut laborels dolore magnarels alia.
-                    </p>
-                  </div>
-                </div>
-              </li>
-
-              <li class="testimonials-item">
-                <div class="content-card" data-testimonials-item>
-                  <figure class="testimonials-avatar-box">
-                    <img
-                      src="{{ asset('assets/images/avatar-4.png') }}"
-                      alt="Henry william"
-                      width="60"
-                      data-testimonials-avatar
-                    />
-                  </figure>
-
-                  <h4
-                    class="h4 testimonials-item-title"
-                    data-testimonials-title
-                  >
-                    Henry william
-                  </h4>
-
-                  <div class="testimonials-text" data-testimonials-text>
-                    <p>
-                      Richard was hired to create a corporate identity. We were
-                      very pleased with the work done. She has a lot of
-                      experience and is very concerned about the needs of
-                      client. Lorem ipsum dolor sit amet, ullamcous cididt
-                      consectetur adipiscing elit, seds do et eiusmod tempor
-                      incididunt ut laborels dolore magnarels alia.
-                    </p>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </section> --}}
+                                    <div
+                                        style="margin-top: 1.25rem; display: flex; align-items: center; justify-content: center">
+                                        @if ($review->photo)
+                                            <img src="{{ Storage::url($review->photo) }}" alt="{{ $review->name }}"
+                                                style="max-width: 20vw;border-radius:0.5rem" />
+                                        @endif
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </section>
 
                 <!--
           - testimonials modal
@@ -619,11 +530,13 @@
                             style="display: flex ;
                                     flex-wrap: wrap;
                                     justify-content: space-between;
-                                    gap: 20px;">
+                                    gap: 1.25rem;">
                             @foreach ($skills as $skill)
                                 <div class="skill-item">
-                                    <img src="{{ $skill->icon }}" alt="{{ $skill->name }}" class="skill-icon" style="width: 60px; height: 60px; ">
-                                    <p class="skill-name" style="color:grey;margin-top: 10px">{{ $skill->name }}</p>
+                                    <img src="{{ $skill->icon }}" alt="{{ $skill->name }}" class="skill-icon"
+                                        style="width: 3.75rem; height: 3.75rem; ">
+                                    <p class="skill-name" style="color:grey;margin-top: .625rem">{{ $skill->name }}
+                                    </p>
                                 </div>
                             @endforeach
                         </div>
@@ -661,10 +574,9 @@
                                     <p class="project-category">{{ $project->short_desc }}</p>
                                 </a>
                             </li>
-                            
                         @endforeach
 
-                
+
                     </ul>
 
                     {{-- modal --}}

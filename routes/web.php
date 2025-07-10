@@ -61,4 +61,7 @@ Route::middleware('auth')->group(function () {
 
     //project
     Route::resource('project', ProjectController::class);
+
+    //review
+    Route::resource('review', ReviewController::class);
 });

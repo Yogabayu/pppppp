@@ -44,6 +44,11 @@
                     <i class="fas fa-magnifying-glass-chart"></i><span>Project</span>
                 </a>
             </li>
+            <li class='{{ Request::is('review') ? 'active' : '' }}'>
+                <a class="nav-link " href="{{ route('review.index') }}">
+                    <i class="fas fa-magnifying-glass-chart"></i><span>Review</span>
+                </a>
+            </li>
 
             {{-- <li class='{{ Request::is('datas') ? 'active' : '' }}'>
                 <a class="nav-link" href="#">
